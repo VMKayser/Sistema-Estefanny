@@ -1,0 +1,93 @@
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\comercial_Estefanny_base_datos.db
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Comercial Estefannny.exe.config
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Comercial Estefannny.exe.manifest
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Comercial Estefannny.application
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Comercial Estefannny.exe
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Comercial Estefannny.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\ClosedXML.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\ClosedXML.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\ClosedXML.Parser.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\DocumentFormat.OpenXml.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\DocumentFormat.OpenXml.Framework.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\EntityFramework.SqlServer.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\EntityFramework.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\ExcelNumberFormat.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Xceed.Wpf.AvalonDock.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Xceed.Wpf.Toolkit.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\de\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\es\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\fr\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\hu\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\it\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\nl-BE\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\ro\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\ru\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\sv\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\FontAwesome.Sharp.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\LiveCharts.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\LiveCharts.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\LiveCharts.Wpf.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\LiveCharts.Wpf.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Microsoft.Bcl.HashCode.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\Microsoft.Data.Sqlite.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\RBush.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\RFBCodeWorks.DatabaseObjects.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\RFBCodeWorks.DatabaseObjects.SqLite.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\RFBCodeWorks.SqlKata.Extensions.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\SixLabors.Fonts.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\SQLitePCLRaw.core.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\SqlKata.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\System.Data.SQLite.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\System.Buffers.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\System.Data.SQLite.EF6.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\System.Data.SQLite.Linq.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\System.Memory.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\System.Numerics.Vectors.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\PantallaInicio.csproj.AssemblyReference.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\PantallaInicio.csproj.SuggestedBindingRedirects.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny.exe.config
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\styles\EstiloBotones.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\styles\UIColors.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\MainWindow.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Clientes.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Compras.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Inventario.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\PantallaInicial.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\PantallaInicio.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Proveedores.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\pruebabase.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Transacciones.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Ventas.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\App.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny_Content.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny_MarkupCompile.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny_MarkupCompile.lref
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\App.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\MainWindow.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Clientes.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Compras.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Inventario.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\PantallaInicial.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\PantallaInicio.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Proveedores.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\pruebabase.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Transacciones.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\View\Ventas.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny.g.resources
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial_Estefannny.Properties.Resources.resources
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\PantallaInicio.csproj.GenerateResource.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\PantallaInicio.csproj.CoreCompileInputs.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny.exe.manifest
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny.application
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Pantalla.C586C42F.Up2Date
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny.exe
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Release\Comercial Estefannny.pdb

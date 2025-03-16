@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="Comercial_Estefannny.View.Proveedores"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+           xmlns:local="clr-namespace:Comercial_Estefannny.View"
+           xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+           mc:Ignorable="d" 
+           d:DesignHeight="606" d:DesignWidth="751">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Nuevo Grid dentro de la segunda fila con las divisiones de columna -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListView x:Name="ProveedoresListView" Margin="10,23,10,10" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial Black" FontSize="11" ScrollViewer.HorizontalScrollBarVisibility="Visible" SelectionChanged="ProveedoresListView_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="300"/>
+                            <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}" Width="150"/>
+                            <GridViewColumn Header="Direccion" DisplayMemberBinding="{Binding Direccion}" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <TextBox x:Name="TextBuscadorProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Height="18" />
+            </Grid>
+            <Grid Margin="0,1,375,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="NombreProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="NOMBRE:" VerticalAlignment="Center" Width="92" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="20"/>
+                <TextBox x:Name="DireccionProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="DIRECCION:" VerticalAlignment="Center" Width="118" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Grid.Row="2" Height="20"/>
+                <TextBox x:Name="TelefonoProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="TELEFONO:" VerticalAlignment="Center" Width="118" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Grid.Row="1" Height="20"/>
+                <TextBox x:Name="TextDireccionProveedor" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
+                <TextBox x:Name="TextTelefonoProveedor" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
+                <TextBox x:Name="TextNombreProveedor" HorizontalAlignment="Left" Margin="210,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
+
+            </Grid>
+            <Grid Margin="376,0,-1,1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button x:Name="BotonAgregarProveedor" Content="Agregar" HorizontalAlignment="Left" Margin="29,28,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  FontFamily="Arial Black" Height="32" BorderBrush="Black" Click="BotonAgregarProveedor_Click"/>
+                <Button x:Name="BotonEliminarProveedor" Content="Eliminar" HorizontalAlignment="Left" Margin="29,80,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  BorderBrush="Black" Height="32" FontFamily="Arial Black" Click="BotonEliminarProveedor_Click" />
+                <Button x:Name="BotonEditarProveedor" Content="Editar" HorizontalAlignment="Left" Margin="29,0,0,0" VerticalAlignment="Center" Width="148"  BorderBrush="Black" Height="31" FontFamily="Arial Black"  Grid.Row="1" Click="BotonEditarProveedor_Click"/>
+                <Button x:Name="BotonImportarDatosProveedor" Content="Importar Datos" HorizontalAlignment="Left" Margin="29,190,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  BorderBrush="Black" Height="32" FontFamily="Arial Black" Click="BotonImportarDatosProveedor_Click"/>
+            </Grid>
+        </Grid>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                <GradientStop Color="#FFFBABAD" Offset="0"/>
+                <GradientStop Color="#FFFDCECF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+
+
+
+    </Grid>
+</UserControl>

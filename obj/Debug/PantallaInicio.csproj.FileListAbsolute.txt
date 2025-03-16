@@ -1,0 +1,93 @@
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\comercial_Estefanny_base_datos.db
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Comercial Estefannny.exe.config
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Comercial Estefannny.exe.manifest
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Comercial Estefannny.application
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Comercial Estefannny.exe
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Comercial Estefannny.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\ClosedXML.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\ClosedXML.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\ClosedXML.Parser.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\DocumentFormat.OpenXml.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\EntityFramework.SqlServer.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\EntityFramework.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\ExcelNumberFormat.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Xceed.Wpf.AvalonDock.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\nl-BE\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\FontAwesome.Sharp.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\LiveCharts.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\LiveCharts.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\LiveCharts.Wpf.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\LiveCharts.Wpf.pdb
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Microsoft.Bcl.HashCode.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\Microsoft.Data.Sqlite.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\RBush.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\RFBCodeWorks.DatabaseObjects.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\RFBCodeWorks.DatabaseObjects.SqLite.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\RFBCodeWorks.SqlKata.Extensions.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\SixLabors.Fonts.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\SQLitePCLRaw.core.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\SqlKata.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\System.Data.SQLite.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\System.Buffers.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\System.Data.SQLite.EF6.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\System.Data.SQLite.Linq.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\System.Memory.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\System.Numerics.Vectors.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\PantallaInicio.csproj.AssemblyReference.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\PantallaInicio.csproj.SuggestedBindingRedirects.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny.exe.config
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\styles\EstiloBotones.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\styles\UIColors.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\MainWindow.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Clientes.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Compras.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Inventario.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\PantallaInicial.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\PantallaInicio.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Proveedores.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\pruebabase.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Transacciones.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Ventas.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\App.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny_Content.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny_MarkupCompile.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny_MarkupCompile.lref
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\App.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\MainWindow.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Clientes.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Compras.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Inventario.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\PantallaInicial.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\PantallaInicio.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Proveedores.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\pruebabase.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Transacciones.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\View\Ventas.baml
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny.g.resources
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial_Estefannny.Properties.Resources.resources
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\PantallaInicio.csproj.GenerateResource.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\PantallaInicio.csproj.CoreCompileInputs.cache
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny.exe.manifest
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny.application
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Pantalla.C586C42F.Up2Date
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny.exe
+D:\proyecto comercial estefanny\Comercial Estefannny\obj\Debug\Comercial Estefannny.pdb
