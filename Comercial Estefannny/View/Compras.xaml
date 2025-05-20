@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="Comercial_Estefannny.View.Compras"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Comercial_Estefannny.View"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             mc:Ignorable="d" 
+             d:DesignHeight="606" d:DesignWidth="751">
+    <UserControl.Resources>
+        <Style x:Key="DatePickerCalendarStyle1" TargetType="{x:Type Calendar}">
+            <Setter Property="Foreground" Value="#FF333333"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE4EAF0" Offset="0"/>
+                        <GradientStop Color="#FFECF0F4" Offset="0.16"/>
+                        <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
+                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="#FF617584" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
+                            <CalendarItem x:Name="PART_CalendarItem" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Style="{TemplateBinding CalendarItemStyle}"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="188*"/>
+            <RowDefinition Height="115*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="268*"/>
+            <ColumnDefinition Width="483*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Height="606" VerticalAlignment="Top" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.RowSpan="8" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="62*" />
+                    <ColumnDefinition Width="63*" />
+
+                </Grid.ColumnDefinitions>
+                <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" 
+            x:Name="FechaCompra" 
+            Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="6,10,0,0" 
+            BorderBrush="{x:Null}" 
+            Background="{x:Null}" 
+            Foreground="#FF333333" 
+            FontFamily="Arial Black" 
+            Cursor="AppStarting" 
+            SelectedDate="{Binding Fecha, Mode=TwoWay}" 
+            Width="136" 
+            Height="24" 
+            VerticalAlignment="Top" />
+                <!-- ComboBox para Producto -->
+                <ComboBox x:Name="ComboProducto" 
+Grid.Column="1" 
+HorizontalAlignment="Center" 
+Margin="0,149,0,0" 
+VerticalAlignment="Top" 
+Width="121" 
+Height="21" 
+IsEditable="True" 
+IsTextSearchEnabled="False"
+          ItemsSource="{Binding Productos1}" 
+DisplayMemberPath="NombreProducto" 
+SelectionChanged="ComboProducto_SelectionChanged"
+PreviewKeyUp="ComboProducto_FiltrarBusqueda"
+
+          GotFocus="ComboProducto_GotFocus"
+FontFamily="Arial Black"
+FontSize="12" RenderTransformOrigin="0.5,0.5">
+                    <ComboBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="2.114"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="-0.554"/>
+                        </TransformGroup>
+                    </ComboBox.RenderTransform>
+                </ComboBox>
+
+                <!-- ComboBox para Marca -->
+                <ComboBox x:Name="ComboMarca" 
+          Grid.Column="1" 
+          HorizontalAlignment="Left" 
+          Margin="6,105,0,0" 
+          VerticalAlignment="Top" 
+          Width="120" 
+          Height="22" 
+          IsEditable="True" 
+          IsTextSearchEnabled="True" 
+          ItemsSource="{Binding Marcas}" />
+
+                <!-- ComboBox para Categoria -->
+                <ComboBox x:Name="ComboCategoria" 
+          Grid.Column="1" 
+          HorizontalAlignment="Left" 
+          Margin="6,56,0,0" 
+          VerticalAlignment="Top" 
+          Width="120" 
+          Height="22" 
+          IsEditable="True" 
+          IsTextSearchEnabled="True" 
+          ItemsSource="{Binding Categorias}" />
+
+                <!-- ComboBox para Variante -->
+                <ComboBox x:Name="ComboVariante" 
+          Grid.Column="1" 
+          HorizontalAlignment="Left" 
+          Margin="6,198,0,0" 
+          VerticalAlignment="Top" 
+          Width="120" 
+          Height="22" 
+          IsEditable="True" 
+          IsTextSearchEnabled="True" 
+
+          ItemsSource="{Binding Variantes}" />
+
+                <xctk:DecimalUpDown x:Name="DecimalCantidad" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Left" 
+                    Margin="6,245,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="76" 
+                    Value="{Binding Cantidad, Mode=TwoWay}" Height="20" />
+
+                <xctk:DecimalUpDown x:Name="DecimalPrecio" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Left" 
+                    Margin="6,291,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="76" 
+                    Value="{Binding PrecioVenta, Mode=TwoWay}" 
+                    Height="20" />
+
+                <xctk:DecimalUpDown x:Name="DecimalDescuento" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Left" 
+                    Margin="6,336,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="76" 
+                    Value="{Binding Descuento, Mode=TwoWay}" Height="20" />
+            </Grid>
+
+            <TextBox x:Name="TextFecha" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="FECHA" VerticalAlignment="Center" Width="69" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black"/>
+            <TextBox x:Name="TextCategoria" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="CATEGORIA" VerticalAlignment="Center" Width="112" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="1"/>
+            <TextBox x:Name="TextMarca" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="MARCA" VerticalAlignment="Center" Width="152" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="2"/>
+            <TextBox x:Name="TextoProducto" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="PRODUCTO" VerticalAlignment="Center" Width="112" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="3"/>
+            <TextBox x:Name="TextoVariante" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="VARIANTE" VerticalAlignment="Center" Width="101" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="4"/>
+            <TextBox x:Name="TextoCantidad" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="CANTIDAD" VerticalAlignment="Center" Width="101" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="5"/>
+            <TextBox x:Name="Texto_Precio" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="PRECIO" VerticalAlignment="Center" Width="86" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="6"/>
+            <TextBox x:Name="TextoDescuento" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="DESCUENTO" VerticalAlignment="Center" Width="123" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="7"/>
+            <Button x:Name="BotonAgregar" Content="Agregar Producto" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="148" Click="BotonAgregar_Click" FontFamily="Arial Black" Height="32" BorderBrush="Black" Grid.Row="8"/>
+            <Button x:Name="BotonEliminar" Content="Eliminar Producto" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="148" Click="BotonEliminar_Click" FontFamily="Arial Black" Height="32" BorderBrush="Black" Grid.Row="8"/>
+            <Button x:Name="BotonEditar" Content="Editar Producto" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" Click="BotonEditar_Click" FontFamily="Arial Black" Height="32" BorderBrush="Black" Grid.Row="8"/>
+            <Button x:Name="BotonRegistrar" Content="Regitrar Venta" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Width="148" FontFamily="Arial Black" Height="32" BorderBrush="Black" Grid.Row="8" Click="BotonRegistrar_Click"/>
+
+        </Grid>
+        <ListView x:Name="ListaProductosCompra" 
+          Margin="0,35,0,10" 
+          FontFamily="Arial Black" 
+                  
+          Background="White" 
+          BorderBrush="{x:Null}" 
+          ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+          ScrollViewer.VerticalScrollBarVisibility="Visible" 
+          HorizontalContentAlignment="Stretch" 
+          VerticalContentAlignment="Center" Grid.Column="1">
+
+            <ListView x:Name="ProductosListView"  ItemsSource="{Binding ProductosDeCompra}" SelectedItem="{Binding productoSeleccionado, Mode=TwoWay}" SelectionChanged="ProductosListView_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nombre" Width="140" DisplayMemberBinding="{Binding NombreProducto}" />
+                        <GridViewColumn Header="Variante" Width="80" DisplayMemberBinding="{Binding Variante}" />
+                        <GridViewColumn Header="Cantidad" Width="60" DisplayMemberBinding="{Binding Cantidad}" />
+                        <GridViewColumn Header="Precio" Width="60" DisplayMemberBinding="{Binding Precio}" />
+                        <GridViewColumn Header="Descuento" Width="70" DisplayMemberBinding="{Binding Descuento}" />
+                        <GridViewColumn Header="Total" Width="60" DisplayMemberBinding="{Binding Total}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </ListView>
+        <TextBox x:Name="TextLista" Margin="114,10,114,0" TextWrapping="Wrap" Text="LISTA DE PRODUCTOS" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" FontSize="16" Grid.Column="1" Height="20"/>
+        <ComboBox x:Name="ComboProveedor" 
+          Grid.Column="1" 
+          Margin="353,93,10,115" 
+          IsEditable="True" 
+          IsTextSearchEnabled="True" 
+          Text="{Binding Proveedor, Mode=TwoWay}" 
+          Grid.Row="1" 
+          ItemsSource="{Binding ProveedoresCache}" 
+          DisplayMemberPath="Nombre" RenderTransformOrigin="0.512,0.614" />
+        <TextBox x:Name="TextProveedor" Margin="27,0,358,0" TextWrapping="Wrap" Text="PROVEEDOR" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="TextTotalPagar" Margin="27,26,336,0" TextWrapping="Wrap" Text="TOTAL A PAGAR" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="TextTotalCompra" 
+         Grid.Column="1" 
+         HorizontalAlignment="Left" 
+         Margin="353,25,0,0" 
+         Grid.Row="1" 
+         TextWrapping="Wrap" 
+         VerticalAlignment="Top" 
+         Width="120"
+         Text="{Binding TotalAPagar, Mode=OneWay, StringFormat=C}" />
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                <GradientStop Color="#FFFBABAD" Offset="0"/>
+                <GradientStop Color="#FFFDCECF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+    </Grid>
+</UserControl>
