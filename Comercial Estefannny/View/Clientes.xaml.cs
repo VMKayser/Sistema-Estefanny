@@ -18,16 +18,14 @@ using Comercial_Estefannny.ViewModel;
 
 namespace Comercial_Estefannny.View
 {
-    public partial class Clientes : UserControl
+    public partial class Clientes : System.Windows.Controls.UserControl
     {
         private ICollectionView ClientesView;
         public ObservableCollection<ClientesC> ClientesList { get; set; }= new ObservableCollection<ClientesC>();
 
         public Clientes()
         {
-
             InitializeComponent();
-
             // Asignar la colección de productos a un ICollectionView para habilitar el filtrado
             CargarClientes();
             ClientesView = CollectionViewSource.GetDefaultView(ClientesList);
@@ -37,39 +35,30 @@ namespace Comercial_Estefannny.View
         {
             // Limpiar la colección actual
             ClientesList.Clear();
-
             // Obtener los productos de la base de datos y agregar a la colección
             foreach (var cliente in ClientesC.ObtenerClientes())
             {
                 ClientesList.Add(cliente);
             }
-
             // Asignar la colección al ListView
             ClientesListView.ItemsSource = ClientesList;
         }
         // Método para agregar cliente
-        // Método para agregar un cliente
         private void BotonAgregarCliente_Click(object sender, RoutedEventArgs e)
         {
             string nombreCliente = TextNombreCliente.Text;
             string direccion = TextDireccionCliente.Text;
             string telefono = TextTelefonoCliente.Text;
             double deuda;
-
-            // Validar que el nombre esté ingresado
             if (string.IsNullOrEmpty(nombreCliente))
             {
-                MessageBox.Show("Por favor, ingrese el nombre del cliente.");
+                System.Windows.MessageBox.Show("Por favor, ingrese el nombre del cliente.");
                 return;
             }
-
-            // Convertir deuda en un valor por defecto si no está ingresada
             if (!double.TryParse(TextDeudaCliente.Text, out deuda))
             {
-                deuda = 0.0;  // Si no se ingresa una deuda, se asigna 0 por defecto
+                deuda = 0.0;
             }
-
-            // Crear un objeto Cliente con los datos ingresados
             ClientesC nuevoCliente = new ClientesC
             {
                 Nombre = nombreCliente,
@@ -77,17 +66,11 @@ namespace Comercial_Estefannny.View
                 Telefono = telefono,
                 Deuda = deuda
             };
-
-            // Llamar al método del ViewModel para insertar el cliente en la base de datos
-            nuevoCliente.InsertarCliente();  // Asumimos que tienes este método en tu ViewModel
-
-            MessageBox.Show("Cliente agregado exitosamente.");
-
-            // Actualizar la lista de clientes
+            nuevoCliente.InsertarCliente();
+            System.Windows.MessageBox.Show("Cliente agregado exitosamente.");
             CargarClientes();
             LimpiarCampos();
         }
-
 
         private void BotonEliminarCliente_Click(object sender, RoutedEventArgs e)
         {
@@ -96,7 +79,7 @@ namespace Comercial_Estefannny.View
             // Validar que el nombre esté ingresado
             if (string.IsNullOrEmpty(nombreCliente))
             {
-                MessageBox.Show("Por favor, ingrese el nombre del cliente a eliminar.");
+                System.Windows.MessageBox.Show("Por favor, ingrese el nombre del cliente a eliminar.");
                 return;
             }
 
@@ -105,11 +88,11 @@ namespace Comercial_Estefannny.View
             if (cliente != null)
             {
                 cliente.EliminarCliente();  // Método en tu ViewModel que elimina el cliente
-                MessageBox.Show("Cliente eliminado exitosamente.");
+                System.Windows.MessageBox.Show("Cliente eliminado exitosamente.");
             }
             else
             {
-                MessageBox.Show("Cliente no encontrado.");
+                System.Windows.MessageBox.Show("Cliente no encontrado.");
             }
 
             // Actualizar la lista de clientes
@@ -119,48 +102,47 @@ namespace Comercial_Estefannny.View
         }
 
         private void BotonEditarCliente_Click(object sender, RoutedEventArgs e)
-{
-    string nombreCliente = TextNombreCliente.Text;
-    string nuevaDireccion = TextDireccionCliente.Text;
-    string nuevoTelefono = TextTelefonoCliente.Text;
-    double nuevaDeuda;
+        {
+            string nombreCliente = TextNombreCliente.Text;
+            string nuevaDireccion = TextDireccionCliente.Text;
+            string nuevoTelefono = TextTelefonoCliente.Text;
+            double nuevaDeuda;
 
-    // Validar que el nombre esté ingresado
-    if (string.IsNullOrEmpty(nombreCliente))
-    {
-        MessageBox.Show("Por favor, ingrese el nombre del cliente.");
-        return;
-    }
+            // Validar que el nombre esté ingresado
+            if (string.IsNullOrEmpty(nombreCliente))
+            {
+                System.Windows.MessageBox.Show("Por favor, ingrese el nombre del cliente.");
+                return;
+            }
 
-    // Convertir deuda en un valor por defecto si no está ingresada
-    if (!double.TryParse(TextDeudaCliente.Text, out nuevaDeuda))
-    {
-        nuevaDeuda = 0.0;  // Si no se ingresa una deuda, se asigna 0 por defecto
-    }
+            // Convertir deuda en un valor por defecto si no está ingresada
+            if (!double.TryParse(TextDeudaCliente.Text, out nuevaDeuda))
+            {
+                nuevaDeuda = 0.0;  // Si no se ingresa una deuda, se asigna 0 por defecto
+            }
 
-    // Llamada al ViewModel para actualizar el cliente
-    var cliente = ClientesList.FirstOrDefault(c => c.Nombre == nombreCliente);
-    if (cliente != null)
-    {
-        cliente.Direccion = nuevaDireccion;
-        cliente.Telefono = nuevoTelefono;
-        cliente.Deuda = nuevaDeuda;
+            // Llamada al ViewModel para actualizar el cliente
+            var cliente = ClientesList.FirstOrDefault(c => c.Nombre == nombreCliente);
+            if (cliente != null)
+            {
+                cliente.Direccion = nuevaDireccion;
+                cliente.Telefono = nuevoTelefono;
+                cliente.Deuda = nuevaDeuda;
 
-        cliente.ActualizarCliente();  // Método en tu ViewModel para actualizar el cliente
+                cliente.ActualizarCliente();  // Método en tu ViewModel para actualizar el cliente
 
-        MessageBox.Show("Cliente actualizado exitosamente.");
-    }
-    else
-    {
-        MessageBox.Show("Cliente no encontrado.");
-    }
+                System.Windows.MessageBox.Show("Cliente actualizado exitosamente.");
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Cliente no encontrado.");
+            }
 
-    // Actualizar la lista de clientes
-    CargarClientes();
-    // Limpiar los campos de texto después de editar
-    LimpiarCampos();
-}
-
+            // Actualizar la lista de clientes
+            CargarClientes();
+            // Limpiar los campos de texto después de editar
+            LimpiarCampos();
+        }
 
         // Limpiar los campos de texto
         private void LimpiarCampos()
@@ -203,18 +185,17 @@ namespace Comercial_Estefannny.View
                 // Llamar al método ImportarClientesDesdeExcel del ViewModel
                 try
                 {
-                    // Asumimos que tienes un método en tu ViewModel para importar desde Excel
-                    var clientesViewModel = new ClientesC();
-                    clientesViewModel.ImportarClientesDesdeExcel(filePath);
+                    // Llama al método estático correctamente
+                    ClientesC.ImportarClientesDesdeExcel(filePath);
 
-                    MessageBox.Show("Clientes importados exitosamente.");
+                    System.Windows.MessageBox.Show("Clientes importados exitosamente.");
 
                     // Actualizar la lista de clientes después de la importación
                     CargarClientes();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al importar los datos: {ex.Message}");
+                    System.Windows.MessageBox.Show($"Error al importar los datos: {ex.Message}");
                 }
             }
         }

@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -7,14 +7,15 @@ using System.Windows;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Comercial Estefannny")]
-[assembly: AssemblyDescription("Aplicacion de administracion")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ValMed")]
-[assembly: AssemblyProduct("Comercial Estefannny")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+// Comentados para evitar duplicados con generación automática
+//[assembly: AssemblyTitle("Comercial Estefannny")]
+//[assembly: AssemblyDescription("Aplicacion de administracion")]
+//[assembly: AssemblyConfiguration("")]
+//[assembly: AssemblyCompany("ValMed")]
+//[assembly: AssemblyProduct("Comercial Estefannny")]
+//[assembly: AssemblyCopyright("Copyright ©  2024")]
+//[assembly: AssemblyTrademark("")]
+//[assembly: AssemblyCulture("")]
 
 // Si establece ComVisible en false, los tipos de este ensamblado no estarán visibles 
 // para los componentes COM.  Si es necesario obtener acceso a un tipo en este ensamblado desde 
@@ -30,15 +31,15 @@ using System.Windows;
 
 //[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
 
-
-[assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, //donde se encuentran los diccionarios de recursos específicos del tema
-                                     //(se utiliza si no se encuentra ningún recurso en la página,
-                                     // ni diccionarios de recursos de la aplicación)
-    ResourceDictionaryLocation.SourceAssembly //donde se encuentra el diccionario de recursos genérico
-                                              //(se utiliza si no se encuentra ningún recurso en la página,
-                                              // aplicación o diccionarios de recursos específicos del tema)
-)]
+// Comentado para evitar duplicados con generación automática
+//[assembly: ThemeInfo(
+//    ResourceDictionaryLocation.None, //donde se encuentran los diccionarios de recursos específicos del tema
+//                                     //(se utiliza si no se encuentra ningún recurso en la página,
+//                                     // ni diccionarios de recursos de la aplicación)
+//    ResourceDictionaryLocation.SourceAssembly //donde se encuentra el diccionario de recursos genérico
+//                                              //(se utiliza si no se encuentra ningún recurso en la página,
+//                                              // aplicación o diccionarios de recursos específicos del tema)
+//)]
 
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
@@ -48,5 +49,6 @@ using System.Windows;
 //      Número de compilación
 //      Revisión
 //
-[assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.0.0.1")]
+// Comentados para evitar duplicados con generación automática
+//[assembly: AssemblyVersion("1.0.0.1")]
+//[assembly: AssemblyFileVersion("1.0.0.1")]

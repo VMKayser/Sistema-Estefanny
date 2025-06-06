@@ -19,30 +19,32 @@ namespace Comercial_Estefannny.View
     /// <summary>
     /// Lógica de interacción para PantallaInicio.xaml
     /// </summary>
-    public partial class PantallaInicio : UserControl
+    public partial class PantallaInicio : System.Windows.Controls.UserControl
     {
         public PantallaInicio()
         {
             InitializeComponent();
-            DataContext = new PantallaInicioC();
-            // Establecer el directorio de datos
+            var viewModel = new PantallaInicioC();
+            DataContext = viewModel;
             AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
-
-            MostrarProductosBajoStock();
-
-
+            // MostrarProductosBajoStock se debe llamar después de que el componente esté cargado
+            this.Loaded += (s, e) => MostrarProductosBajoStock(viewModel);
         }
+
         public class ProductoBajoStock
         {
             public string NombreProducto { get; set; }
             public int Cantidad { get; set; }
         }
-        private void MostrarProductosBajoStock()
-        {
-            var BajoStock = new PantallaInicioC();
-            var productosBajoStock = BajoStock.ObtenerProductosBajoStock();
-            var productosList = new List<ProductoBajoStock>();
 
+        private void MostrarProductosBajoStock(PantallaInicioC viewModel)
+        {
+            // Buscar el control por nombre si no está generado el campo automáticamente
+            var listView = this.FindName("Astock_ListView") as System.Windows.Controls.ListView;
+            if (listView == null || viewModel == null)
+                return;
+            var productosBajoStock = viewModel.ObtenerProductosBajoStock();
+            var productosList = new List<ProductoBajoStock>();
             foreach (var producto in productosBajoStock)
             {
                 productosList.Add(new ProductoBajoStock
@@ -51,9 +53,7 @@ namespace Comercial_Estefannny.View
                     Cantidad = producto.Item2
                 });
             }
-
-            // Asignar la lista al ItemsSource del ListView
-            Astock_ListView.ItemsSource = productosList;
+            listView.ItemsSource = productosList;
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

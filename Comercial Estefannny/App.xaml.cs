@@ -4,15 +4,21 @@ using System.Windows;
 namespace Comercial_Estefannny
 {
     /// <summary>
-    /// Lógica de interacción para App.xaml
+    /// Aplicación WPF principal del Sistema Comercial Estefannny
     /// </summary>
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-            // Configura DataDirectory para que apunte al directorio de la aplicación
-            AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
+            try
+            {
+                base.OnStartup(e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al iniciar la aplicación: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
         }
     }
 }

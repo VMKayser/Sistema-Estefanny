@@ -5,73 +5,308 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Comercial_Estefannny.View"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
-             d:DesignHeight="606" d:DesignWidth="751">
+             d:DesignHeight="606" d:DesignWidth="751">    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/styles/POSColors.xaml"/>
+                <ResourceDictionary Source="/styles/MasterStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="51*"/>
-                <RowDefinition Height="50*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- Nuevo Grid dentro de la segunda fila con las divisiones de columna -->
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <ListView x:Name="ClientesListView" Margin="10,23,10,10" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial Black" FontSize="11" ScrollViewer.HorizontalScrollBarVisibility="Visible" SelectionChanged="ClientesListView_SelectionChanged">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="300"/>
-                            <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Direccion}" Width="150"/>
-                            <GridViewColumn Header="Direccion" DisplayMemberBinding="{Binding Telefono}" Width="150"/>
-                            <GridViewColumn Header="Deuda" DisplayMemberBinding="{Binding Deuda}" Width="100"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <TextBox x:Name="TextBuscadorCliente" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Height="18" />
-            </Grid>
-            <Grid Margin="0,1,375,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBox x:Name="NombreCliente" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="NOMBRE:" VerticalAlignment="Center" Width="92" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="20"/>
-                <TextBox x:Name="DireccionCliente" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="DIRECCION:" VerticalAlignment="Center" Width="118" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Grid.Row="2" Height="20"/>
-                <TextBox x:Name="TelefonoCliente" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="TELEFONO:" VerticalAlignment="Center" Width="118" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Grid.Row="1" Height="20"/>
-                <TextBox x:Name="DeudaCliente" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="DEUDA:" VerticalAlignment="Center" Width="152" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Grid.Row="3" Height="20"/>
-                <TextBox x:Name="TextDeudaCliente" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
-                <TextBox x:Name="TextDireccionCliente" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
-                <TextBox x:Name="TextTelefonoCliente" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
-                <TextBox x:Name="TextNombreCliente" HorizontalAlignment="Left" Margin="210,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
-
-            </Grid>
-            <Grid Margin="376,0,-1,1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button x:Name="BotonAgregarCliente" Content="Agregar" HorizontalAlignment="Left" Margin="29,28,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148" Click="BotonAgregarCliente_Click" FontFamily="Arial Black" Height="32" BorderBrush="Black"/>
-                <Button x:Name="BotonEliminarCliente" Content="Eliminar" HorizontalAlignment="Left" Margin="29,80,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  BorderBrush="Black" Height="32" FontFamily="Arial Black" Click="BotonEliminarCliente_Click"/>
-                <Button x:Name="BotonEditarCliente" Content="Editar" HorizontalAlignment="Left" Margin="29,0,0,0" VerticalAlignment="Center" Width="148"  BorderBrush="Black" Height="31" FontFamily="Arial Black" Click="BotonEditarCliente_Click" Grid.Row="1"/>
-                <Button x:Name="BotonImportarDatosCliente" Content="Importar Datos" HorizontalAlignment="Left" Margin="29,196,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  BorderBrush="Black" Height="32" FontFamily="Arial Black" Click="BotonImportarDatosCliente_Click"/>
-            </Grid>
-        </Grid>
-
         <Grid.Background>
-            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                <GradientStop Color="#FFFBABAD" Offset="0"/>
-                <GradientStop Color="#FFFDCECF" Offset="1"/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource White}" Offset="0"/>
+                <GradientStop Color="{StaticResource BackgroundPrimary}" Offset="1"/>
             </LinearGradientBrush>
-        </Grid.Background>
-
-
-
-
+        </Grid.Background>        <!-- Header Section -->
+        <Border Background="{StaticResource LavandaHeaderBrush}" Height="80" VerticalAlignment="Top">
+            <Border.Effect>
+                <DropShadowEffect Color="#E0E0E0" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+            </Border.Effect>
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                  <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <fa:IconImage Icon="Users" Width="32" Height="32" Foreground="{StaticResource InfoBlueBrush}" Margin="0,0,15,0"/>
+                    <TextBlock Text="Gestión de Clientes" FontSize="24" FontWeight="Bold" 
+                               Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                </StackPanel>
+                  <!-- Add Customer Button -->
+                <Border Grid.Column="1" CornerRadius="8" Background="{StaticResource ActionGradient}">
+                    <Border.Effect>
+                        <DropShadowEffect Color="{StaticResource InfoBlue}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                    </Border.Effect>
+                    <Button Content="Nuevo Cliente" Background="Transparent" Foreground="White"
+                            Padding="15,8" BorderThickness="0" FontWeight="SemiBold"/>
+                </Border>
+            </Grid>
+        </Border>          <!-- Content Area -->
+        <Grid Margin="20,100,20,20" Background="{StaticResource WhiteBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Customer Form -->
+            <Border Grid.Row="0" Background="{StaticResource BackgroundSecondaryBrush}" 
+                    BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1" 
+                    Padding="20" Margin="0,0,0,20" CornerRadius="12">
+                <Border.Effect>
+                    <DropShadowEffect Color="#E0E0E0" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                      <!-- Form Fields -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,10">
+                        <TextBlock Text="Nombre Cliente" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,5"/>
+                        <Border Background="{StaticResource WhiteBrush}" CornerRadius="8" 
+                                BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1">
+                            <TextBox x:Name="TextNombreCliente" Background="Transparent" BorderThickness="0" 
+                                     Padding="12,8" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                        </Border>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,10,10">
+                        <TextBlock Text="Dirección" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,5"/>
+                        <Border Background="{StaticResource WhiteBrush}" CornerRadius="8" 
+                                BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1">
+                            <TextBox x:Name="TextDireccionCliente" Background="Transparent" BorderThickness="0" 
+                                     Padding="12,8" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                        </Border>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="10,0,10,10">
+                        <TextBlock Text="Teléfono" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,5"/>
+                        <Border Background="{StaticResource WhiteBrush}" CornerRadius="8" 
+                                BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1">
+                            <TextBox x:Name="TextTelefonoCliente" Background="Transparent" BorderThickness="0" 
+                                     Padding="12,8" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                        </Border>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="0" Grid.Column="3" Margin="10,0,0,10">
+                        <TextBlock Text="Deuda" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,5"/>
+                        <Border Background="{StaticResource WhiteBrush}" CornerRadius="8" 
+                                BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1">
+                            <TextBox x:Name="TextDeudaCliente" Background="Transparent" BorderThickness="0" 
+                                     Padding="12,8" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                        </Border>
+                    </StackPanel>                    <!-- Action Buttons -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
+                                Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                        <Border CornerRadius="8" Background="{StaticResource SuccessGradient}" Margin="5">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{StaticResource SuccessGreen}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                            </Border.Effect>
+                            <Button x:Name="BotonAgregarCliente" Background="Transparent" Foreground="White" 
+                                    Padding="15,8" BorderThickness="0" FontWeight="SemiBold"
+                                    Click="BotonAgregarCliente_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage Icon="Plus" Width="16" Height="16" Foreground="White" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Agregar"/>
+                                </StackPanel>
+                            </Button>                        </Border>
+                        <Border CornerRadius="8" Background="{StaticResource ActionGradient}" Margin="5">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{StaticResource InfoBlue}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                            </Border.Effect>
+                            <Button x:Name="BotonEditarCliente" Background="Transparent" Foreground="White" 
+                                    Padding="15,8" BorderThickness="0" FontWeight="SemiBold"
+                                    Click="BotonEditarCliente_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage Icon="Edit" Width="16" Height="16" Foreground="White" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Editar"/>
+                                </StackPanel>
+                            </Button>                        </Border>
+                        <Border CornerRadius="8" Background="{StaticResource DangerRedBrush}" Margin="5">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{StaticResource DangerRed}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                            </Border.Effect>
+                            <Button x:Name="BotonEliminarCliente" Background="Transparent" Foreground="White" 
+                                    Padding="15,8" BorderThickness="0" FontWeight="SemiBold"
+                                    Click="BotonEliminarCliente_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage Icon="Trash" Width="16" Height="16" Foreground="White" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Eliminar"/>
+                                </StackPanel>
+                            </Button>                        </Border>
+                        <Border CornerRadius="8" Background="{StaticResource InfoBlueBrush}" Margin="5">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{StaticResource InfoBlue}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                            </Border.Effect>
+                            <Button x:Name="BotonImportarDatosCliente" Background="Transparent" Foreground="White" 
+                                    Padding="15,8" BorderThickness="0" FontWeight="SemiBold"
+                                    Click="BotonImportarDatosCliente_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage Icon="FileImport" Width="16" Height="16" Foreground="White" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Importar Excel"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>            <!-- Clients List -->
+            <Border Grid.Row="1" CornerRadius="12" BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1"
+                    Background="{StaticResource WhiteBrush}">
+                <ListView x:Name="ClientesListView" SelectionChanged="ClientesListView_SelectionChanged"
+                          Background="Transparent" BorderThickness="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="200"/>
+                        <GridViewColumn Header="Dirección" DisplayMemberBinding="{Binding Direccion}" Width="250"/>
+                        <GridViewColumn Header="Teléfono" DisplayMemberBinding="{Binding Telefono}" Width="120"/>
+                        <GridViewColumn Header="Deuda" DisplayMemberBinding="{Binding Deuda, StringFormat=C}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.Resources>
+                    <!-- GridView Header Style -->
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="Background" Value="{StaticResource BackgroundPrimaryBrush}"/>
+                        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="Padding" Value="12,10"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource BorderLightBrush}"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    </Style>
+                    
+                    <!-- ListViewItem Style -->
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Padding" Value="8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource BackgroundSecondaryBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{StaticResource AzulAccentBrush}"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>                </ListView.Resources>
+            </ListView>
+            </Border>
+            <Border Grid.Row="0" Background="#F8F9FA" BorderBrush="#E9ECEF" BorderThickness="1"
+                    Margin="0,100,0,20" Padding="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Form Fields -->
+                    <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,10,0">
+                        <TextBlock Text="Nombre:" Foreground="#2C3E50" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtNombre" Height="35" Padding="10,8" BorderBrush="#D1D5DB" 
+                                 FontSize="14" Background="White"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="1" Grid.Row="0" Margin="5,0">
+                        <TextBlock Text="Teléfono:" Foreground="#2C3E50" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtTelefono" Height="35" Padding="10,8" BorderBrush="#D1D5DB" 
+                                 FontSize="14" Background="White"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="2" Grid.Row="0" Margin="10,0,0,0">
+                        <TextBlock Text="Email:" Foreground="#2C3E50" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtEmail" Height="35" Padding="10,8" BorderBrush="#D1D5DB" 
+                                 FontSize="14" Background="White"/>
+                    </StackPanel>
+                    
+                    <!-- Buttons -->
+                    <StackPanel Grid.Column="3" Grid.Row="0" Orientation="Horizontal" 
+                                VerticalAlignment="Bottom" Margin="15,0,0,0">
+                        <Button Content="Guardar" Background="#4CAF50" Foreground="White" 
+                                Padding="20,8" Margin="0,0,10,0" 
+                                BorderThickness="0" FontWeight="SemiBold"/>
+                        <Button Content="Limpiar" Background="#6C757D" Foreground="White" 
+                                Padding="20,8" BorderThickness="0" 
+                                FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            
+            <!-- Customers Data Grid -->
+            <Border Grid.Row="1" Background="White" BorderBrush="#E9ECEF" BorderThickness="1" 
+                    Margin="0,100,0,0">
+                <DataGrid x:Name="dgvClientes" AutoGenerateColumns="False" 
+                          Background="White" GridLinesVisibility="Horizontal"
+                          HeadersVisibility="Column" RowBackground="White" 
+                          AlternatingRowBackground="#F8F9FA"
+                          BorderThickness="0" FontSize="14"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto">
+                    
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#2C3E50"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Padding" Value="15,12"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,0"/>
+                            <Setter Property="BorderBrush" Value="#34495E"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Height" Value="45"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#E8F5E8"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="80"/>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
+                        <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="150"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
+                        <DataGridTextColumn Header="Fecha Registro" Binding="{Binding FechaRegistro}" Width="150"/>
+                        
+                        <DataGridTemplateColumn Header="Acciones" Width="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Content="Editar" Background="#007BFF" Foreground="White" 
+                                                Padding="8,4" Margin="2" BorderThickness="0" 
+                                                FontSize="12" FontWeight="SemiBold"/>
+                                        <Button Content="Eliminar" Background="#DC3545" Foreground="White" 
+                                                Padding="8,4" Margin="2" BorderThickness="0" 
+                                                FontSize="12" FontWeight="SemiBold"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 
 namespace Comercial_Estefanny.Services
 {
     public class DataService
-    {
-
-        // Conexión a la base de datos
+    {        // Conexión a la base de datos
         private static DataService _instance;
-        private readonly string connectionString = @"Data Source=.\comercial Estefanny base datos.db;Version=3;";
+        private readonly string connectionString;
+        
         // Constructor privado para evitar que se creen instancias fuera de la clase
-        private DataService() { }
+        private DataService() 
+        { 
+            // Construir la ruta de conexión usando el directorio de la aplicación
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "comercial_Estefanny_base_datos.db");
+            connectionString = $"Data Source={dbPath};Version=3;";
+        }
 
         // Propiedad para acceder a la instancia única
         public static DataService Instance

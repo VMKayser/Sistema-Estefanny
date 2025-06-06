@@ -1,0 +1,278 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Importar la paleta de colores POS -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="POSColors.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!-- =============================================== -->
+    <!-- BOTONES ESPECÍFICOS PARA SISTEMA POS          -->
+    <!-- =============================================== -->
+      <!-- Botón de venta (acción principal) -->
+    <Style x:Key="SaleButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource RosaFuerteBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="20,12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            CornerRadius="8" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ActiveRosa}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{StaticResource RosaFuerte}" 
+                                                      BlurRadius="10" 
+                                                      ShadowDepth="2" 
+                                                      Opacity="0.3"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ActiveRosa}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+      <!-- Botón de cancelar -->
+    <Style x:Key="CancelButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DangerRedBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="16,10"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            CornerRadius="6" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource DangerRed}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#C62828"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Botón secundario (info, editar) -->
+    <Style x:Key="InfoButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource InfoBlueBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="16,10"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            CornerRadius="6" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource InfoBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#1976D2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- =============================================== -->
+    <!-- INDICADORES DE ESTADO                          -->
+    <!-- =============================================== -->
+    
+    <!-- Indicador de stock bueno -->
+    <Style x:Key="StockGoodIndicator" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource StockAltoBrush}"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- Indicador de stock bajo -->
+    <Style x:Key="StockLowIndicator" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource StockMedioBrush}"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- Indicador de stock agotado -->
+    <Style x:Key="StockOutIndicator" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource StockBajoBrush}"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- =============================================== -->
+    <!-- CARDS PARA MÉTRICAS                           -->
+    <!-- =============================================== -->
+    
+    <!-- Card de ventas -->
+    <Style x:Key="SalesCardStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,4"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Margin" Value="8"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#E9ECEF" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Card de ingresos -->
+    <Style x:Key="RevenueCardStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,4"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Margin" Value="8"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#E9ECEF" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Card de inventario -->
+    <Style x:Key="InventoryCardStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource WarningBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,4"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Margin" Value="8"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#E9ECEF" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- =============================================== -->
+    <!-- TEXTO CON COLORES SEMÁNTICOS                   -->
+    <!-- =============================================== -->
+    
+    <!-- Texto de precio/dinero -->
+    <Style x:Key="MoneyTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource MoneyGreen}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+    
+    <!-- Texto de pérdida -->
+    <Style x:Key="LossTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource LossRed}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+    
+    <!-- Texto de advertencia -->
+    <Style x:Key="WarningTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource WarningOrange}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!-- Texto informativo -->
+    <Style x:Key="InfoTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource InfoBlue}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!-- =============================================== -->
+    <!-- INPUTS MEJORADOS                               -->
+    <!-- =============================================== -->
+    
+    <!-- TextBox para cantidades -->
+    <Style x:Key="QuantityTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderLight}"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{StaticResource FocusBlue}" 
+                                                      BlurRadius="8" 
+                                                      ShadowDepth="0" 
+                                                      Opacity="0.4"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- ComboBox mejorado -->
+    <Style x:Key="CategoryComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderLight}"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+    </Style>
+    
+</ResourceDictionary>

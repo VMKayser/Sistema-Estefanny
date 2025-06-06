@@ -14,10 +14,9 @@ namespace Comercial_Estefannny.ViewModel
         public ObservableCollection<ClientesC> Clientes { get; set; }
         public ObservableCollection<ProductoVenta> Productos { get; set; }
         public ObservableCollection<string> MetodosDePago { get; set; }
-        private InventarioC inventario;
         private ClientesC _cliente;
         private SQLiteConnection connection;
-       public string NombreEntidad { get; set; }
+        public string NombreEntidad { get; set; }
         private bool _esCredito;
 
 
@@ -207,7 +206,26 @@ namespace Comercial_Estefannny.ViewModel
             return ventas;
         }
 
-
+        public static ObservableCollection<Ventas> ObtenerVentas()
+        {
+            var ventas = new ObservableCollection<Ventas>();
+            using (var conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Cadena"].ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT * FROM venta", conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ventas.Add(new Ventas
+                    {
+                        Fecha = DateTime.Parse(reader["fecha"].ToString()),
+                        MetodoPago = reader["tipo_pago"].ToString(),
+                        // Completa con los campos necesarios
+                    });
+                }
+            }
+            return ventas;
+        }
 
     }
 }

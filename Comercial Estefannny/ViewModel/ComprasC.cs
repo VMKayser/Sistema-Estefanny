@@ -9,13 +9,13 @@ namespace Comercial_Estefannny.ViewModel
 {
     public class Compra : ViewModelbase
     {
-        public ObservableCollection<proveedores> Proveedores { get; set; }
+        public ObservableCollection<Proveedores> Proveedores { get; set; }
         public ObservableCollection<ProductoCompra> ProductosCompra { get; set; }
-        private proveedores _proveedor;
+        private Proveedores _proveedor;
         private SQLiteConnection connection;
         public string NombreEntidad { get; set; }
         // Propiedad de proveedor que se enlaza al ComboBox
-        public proveedores Proveedor
+        public Proveedores Proveedor
         {
             get => _proveedor;
             set
@@ -34,16 +34,27 @@ namespace Comercial_Estefannny.ViewModel
         public Compra()
         {
             // Obtener todos los proveedores desde la base de datos
-            Proveedores = new ObservableCollection<proveedores>(proveedores.Obtenerproveedores());
+            Proveedores = new ObservableCollection<Proveedores>(ViewModel.Proveedores.Obtenerproveedores());
             ProductosCompra = new ObservableCollection<ProductoCompra>();
 
             Fecha = DateTime.Now;
             MetodoPago = "Efectivo"; // Valor predeterminado
             MetodosDePago = new ObservableCollection<string> { "Efectivo", "Transferencia", "Tarjeta" };
-        }
-
-        // Propiedades
+        }        // Propiedades
         public DateTime Fecha { get; set; }
+        
+        // Propiedad para binding del DatePicker
+        public DateTime FechaCompra 
+        { 
+            get => Fecha; 
+            set 
+            { 
+                Fecha = value; 
+                OnPropertyChanged(nameof(FechaCompra));
+                OnPropertyChanged(nameof(Fecha));
+            } 
+        }
+        
         public string MetodoPago { get; set; }
         public ObservableCollection<string> MetodosDePago { get; set; }
 
@@ -88,7 +99,7 @@ namespace Comercial_Estefannny.ViewModel
                 conn.Open();
 
                 // Obtener el id_proveedor utilizando el nombre del proveedor
-                int idProveedor = proveedores.ObtenerIdProveedorPorNombre(nombreProveedor);
+                int idProveedor = ViewModel.Proveedores.ObtenerIdProveedorPorNombre(nombreProveedor);
 
                 // Verificar si se encontró el proveedor
                 if (idProveedor == -1)
@@ -146,7 +157,7 @@ namespace Comercial_Estefannny.ViewModel
                     var compra = new Compra
                     {
                         Fecha = DateTime.Parse(reader["fecha"].ToString()),
-                        Proveedor = new proveedores { Nombre = reader["nombre_proveedor"].ToString() },
+                        Proveedor = new Proveedores { Nombre = reader["nombre_proveedor"].ToString() },
                         ProductosCompra = new ObservableCollection<ProductoCompra>()
                     };
 
@@ -180,6 +191,27 @@ namespace Comercial_Estefannny.ViewModel
                 }
             }
 
+            return compras;
+        }
+
+        public static ObservableCollection<Compra> ObtenerCompras()
+        {
+            var compras = new ObservableCollection<Compra>();
+            using (var conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Cadena"].ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT * FROM compra", conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    compras.Add(new Compra
+                    {
+                        Fecha = DateTime.Parse(reader["fecha"].ToString()),
+                        MetodoPago = reader["tipo_pago"].ToString(),
+                        // Completa con los campos necesarios
+                    });
+                }
+            }
             return compras;
         }
     }

@@ -1,0 +1,357 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Master Style Dictionary - Clean Professional Styles -->
+      <!-- Theme Resources -->
+    <ResourceDictionary.MergedDictionaries>
+        <!-- Base Color Palette -->
+        <ResourceDictionary Source="UIColors.xaml"/>
+        
+        <!-- POS Professional Colors & Styles -->
+        <ResourceDictionary Source="POSColors.xaml"/>
+        <ResourceDictionary Source="POSComponentStyles.xaml"/>
+        
+        <!-- Control Styles -->
+        <ResourceDictionary Source="Controls/ModernButtons.xaml"/>
+        <ResourceDictionary Source="Controls/ModernTextBox.xaml"/>
+        <ResourceDictionary Source="Controls/ModernComboBox.xaml"/>
+        <ResourceDictionary Source="Controls/ModernDataGrid.xaml"/>
+        <ResourceDictionary Source="Controls/ModernInputControls.xaml"/>
+        <ResourceDictionary Source="Controls/ModernCards.xaml"/>
+        <ResourceDictionary Source="Controls/ModernMenu.xaml"/>
+        
+        <!-- Theme Styles -->
+        <ResourceDictionary Source="Themes/ModernTheme.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <!-- Global Typography -->
+    <FontFamily x:Key="PrimaryFont">Segoe UI</FontFamily>
+    <FontFamily x:Key="SecondaryFont">Segoe UI Light</FontFamily>
+    <FontFamily x:Key="MonospaceFont">Consolas</FontFamily>
+    
+    <!-- Global Font Sizes -->
+    <System:Double x:Key="TitleFontSize" xmlns:System="clr-namespace:System;assembly=mscorlib">28</System:Double>
+    <System:Double x:Key="SubtitleFontSize" xmlns:System="clr-namespace:System;assembly=mscorlib">20</System:Double>
+    <System:Double x:Key="HeaderFontSize" xmlns:System="clr-namespace:System;assembly=mscorlib">16</System:Double>
+    <System:Double x:Key="BodyFontSize" xmlns:System="clr-namespace:System;assembly=mscorlib">14</System:Double>
+    <System:Double x:Key="CaptionFontSize" xmlns:System="clr-namespace:System;assembly=mscorlib">12</System:Double>
+    
+    <!-- Global Spacing -->
+    <Thickness x:Key="SmallMargin">4</Thickness>
+    <Thickness x:Key="MediumMargin">8</Thickness>
+    <Thickness x:Key="LargeMargin">16</Thickness>
+    <Thickness x:Key="ExtraLargeMargin">24</Thickness>
+    <Thickness x:Key="StandardMargin">16</Thickness>
+    
+    <Thickness x:Key="SmallPadding">8</Thickness>
+    <Thickness x:Key="MediumPadding">12</Thickness>
+    <Thickness x:Key="LargePadding">16</Thickness>
+    <Thickness x:Key="ExtraLargePadding">24</Thickness>
+    
+    <!-- Global Corner Radius -->
+    <CornerRadius x:Key="SmallCornerRadius">4</CornerRadius>
+    <CornerRadius x:Key="MediumCornerRadius">8</CornerRadius>
+    <CornerRadius x:Key="LargeCornerRadius">12</CornerRadius>
+    <CornerRadius x:Key="ExtraLargeCornerRadius">16</CornerRadius>
+    
+    <!-- Animation Durations -->
+    <Duration x:Key="FastAnimation">0:0:0.15</Duration>
+    <Duration x:Key="MediumAnimation">0:0:0.25</Duration>
+    <Duration x:Key="SlowAnimation">0:0:0.4</Duration>
+    
+    <!-- Text Styles -->
+    <Style x:Key="TitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleFontSize}"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="#FF333333"/>
+        <Setter Property="Margin" Value="{StaticResource LargeMargin}"/>
+    </Style>
+    
+    <Style x:Key="SubtitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="#FF555555"/>
+        <Setter Property="Margin" Value="{StaticResource MediumMargin}"/>
+    </Style>
+    
+    <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource HeaderFontSize}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#FF333333"/>
+        <Setter Property="Margin" Value="{StaticResource MediumMargin}"/>
+    </Style>
+    
+    <Style x:Key="BodyTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="#FF666666"/>
+        <Setter Property="Margin" Value="{StaticResource SmallMargin}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style x:Key="CaptionTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="#FF999999"/>
+        <Setter Property="Margin" Value="{StaticResource SmallMargin}"/>
+    </Style>
+    
+    <!-- Theme Selector Resources -->    <!-- Default Theme: Modern -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#4CAF50"/>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="#2196F3"/>
+    <SolidColorBrush x:Key="AccentBrush" Color="#FF9800"/>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#FAFAFA"/>
+    <SolidColorBrush x:Key="SurfaceBrush" Color="White"/>
+    <SolidColorBrush x:Key="OnPrimaryBrush" Color="White"/>
+    <SolidColorBrush x:Key="OnSecondaryBrush" Color="White"/>
+    <SolidColorBrush x:Key="OnBackgroundBrush" Color="#212121"/>
+    <SolidColorBrush x:Key="OnSurfaceBrush" Color="#212121"/>
+      <!-- Default Gradients -->
+    <LinearGradientBrush x:Key="PrimaryGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#4CAF50" Offset="0"/>
+        <GradientStop Color="#2196F3" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="AccentGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FF9800" Offset="0"/>
+        <GradientStop Color="#2196F3" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- InfoGradient fallback (blue gradient) -->
+    <LinearGradientBrush x:Key="InfoGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#2196F3" Offset="0"/>
+        <GradientStop Color="#1565C0" Offset="1"/>
+    </LinearGradientBrush>
+    <!-- TextSecondaryBrush fallback (gray) -->
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#6C757D"/>
+    
+    <!-- Window Style -->
+    <Style x:Key="ModernWindowStyle" TargetType="Window">
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyFontSize}"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="ResizeMode" Value="CanResize"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Window">                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="#4CAF50"
+                            BorderThickness="2"
+                            CornerRadius="12">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#44000000" 
+                                            Direction="270" 
+                                            ShadowDepth="10" 
+                                            BlurRadius="20"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Custom Title Bar -->
+                            <Border Grid.Row="0" 
+                                  Background="{StaticResource PrimaryGradient}"
+                                  CornerRadius="10,10,0,0">
+                                <Grid>
+                                    <TextBlock Text="{TemplateBinding Title}"
+                                             Foreground="{StaticResource OnPrimaryBrush}"
+                                             FontWeight="SemiBold"
+                                             VerticalAlignment="Center"
+                                             Margin="15,0,0,0"/>
+                                    
+                                    <!-- Window Controls -->
+                                    <StackPanel Orientation="Horizontal"
+                                              HorizontalAlignment="Right"
+                                              Margin="0,0,10,0">
+                                        <Button Content="−" Name="MinimizeButton" 
+                                              Style="{StaticResource IconButtonStyle}"
+                                              Width="30" Height="30"/>
+                                        <Button Content="□" Name="MaximizeButton" 
+                                              Style="{StaticResource IconButtonStyle}"
+                                              Width="30" Height="30"/>
+                                        <Button Content="×" Name="CloseButton" 
+                                              Style="{StaticResource IconButtonStyle}"
+                                              Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                            
+                            <!-- Content Area -->
+                            <ContentPresenter Grid.Row="1"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>    </Style>
+
+    <!-- ==================== BUTTON STYLES ==================== -->
+    
+    <!-- Base Modern Button Style -->    <Style x:Key="ModernButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource SecondaryGradient}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="#FF9800"/>
+        <Setter Property="BorderThickness" Value="1"/><Setter Property="Padding" Value="15,8"/>
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyFontSize}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#40000000" BlurRadius="8" ShadowDepth="2"/>
+                        </Border.Effect>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource PrimaryGradient}"/>
+                            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource OnAccentBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Primary Button Style -->
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">        <Setter Property="Background" Value="{StaticResource PrimaryGradient}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="#4CAF50"/>
+    </Style>
+
+    <!-- Secondary Button Style -->
+    <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">        <Setter Property="Background" Value="{StaticResource SecondaryGradient}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="#2196F3"/>
+    </Style>
+
+    <!-- Danger Button Style -->
+    <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFE74C3C" Offset="0"/>
+                    <GradientStop Color="#FFC0392B" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#FFE74C3C"/>
+    </Style>
+
+    <!-- Icon Button Style -->
+    <Style x:Key="IconButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#40FFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#60FFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Label Text Style -->
+    <Style x:Key="LabelTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyFontSize}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="#FF333333"/>
+        <Setter Property="Margin" Value="0,0,0,5"/>
+    </Style>    <!-- Estilo para los botones del menú -->
+    <Style x:Key="MenuButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="20,12"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            BorderThickness="4,0,0,0"
+                            BorderBrush="Transparent"
+                            CornerRadius="0,8,8,0"
+                            Margin="0,2">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource RosaHoverBrush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource RosaIndicadorBrush}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{StaticResource RosaIndicador}" 
+                                                      BlurRadius="8" 
+                                                      ShadowDepth="0" 
+                                                      Opacity="0.2"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource RosaMenuActivoBrush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource RosaAccentBrush}"/>
+                        </Trigger>
+                        <!-- Activo (IsChecked para ToggleButton, o usa Tag/AttachedProperty si tienes binding de activo) -->
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource RosaMenuActivoBrush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource IndicadorMenuActivoBrush}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{StaticResource IndicadorMenuActivo}" 
+                                                      BlurRadius="12" 
+                                                      ShadowDepth="0" 
+                                                      Opacity="0.3"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

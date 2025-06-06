@@ -1,0 +1,81 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Sunset Theme - Warm gradient colors inspired by sunset -->
+    
+    <!-- Base Colors -->
+    <Color x:Key="Sunset.Primary">#FF4A154B</Color>
+    <Color x:Key="Sunset.Secondary">#FF8B2635</Color>
+    <Color x:Key="Sunset.Accent">#FFE64545</Color>
+    <Color x:Key="Sunset.Background">#FFFAF0E6</Color>
+    <Color x:Key="Sunset.Surface">#FFFDF6F0</Color>
+    <Color x:Key="Sunset.OnPrimary">#FFFFFFFF</Color>
+    <Color x:Key="Sunset.OnSecondary">#FFFFFFFF</Color>
+    <Color x:Key="Sunset.OnBackground">#FF4A154B</Color>
+    <Color x:Key="Sunset.OnSurface">#FF4A154B</Color>
+    
+    <!-- Gradient Colors -->
+    <Color x:Key="Sunset.Gradient1">#FFFF7F7F</Color>
+    <Color x:Key="Sunset.Gradient2">#FFFF9A8B</Color>
+    <Color x:Key="Sunset.Gradient3">#FFA8E6CF</Color>
+    <Color x:Key="Sunset.Gradient4">#FFD4A574</Color>
+    
+    <!-- Solid Color Brushes -->
+    <SolidColorBrush x:Key="Sunset.PrimaryBrush" Color="{StaticResource Sunset.Primary}"/>
+    <SolidColorBrush x:Key="Sunset.SecondaryBrush" Color="{StaticResource Sunset.Secondary}"/>
+    <SolidColorBrush x:Key="Sunset.AccentBrush" Color="{StaticResource Sunset.Accent}"/>
+    <SolidColorBrush x:Key="Sunset.BackgroundBrush" Color="{StaticResource Sunset.Background}"/>
+    <SolidColorBrush x:Key="Sunset.SurfaceBrush" Color="{StaticResource Sunset.Surface}"/>
+    <SolidColorBrush x:Key="Sunset.OnPrimaryBrush" Color="{StaticResource Sunset.OnPrimary}"/>
+    <SolidColorBrush x:Key="Sunset.OnSecondaryBrush" Color="{StaticResource Sunset.OnSecondary}"/>
+    <SolidColorBrush x:Key="Sunset.OnBackgroundBrush" Color="{StaticResource Sunset.OnBackground}"/>
+    <SolidColorBrush x:Key="Sunset.OnSurfaceBrush" Color="{StaticResource Sunset.OnSurface}"/>
+    
+    <!-- Gradient Brushes -->
+    <LinearGradientBrush x:Key="Sunset.MainGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FFFF7F7F" Offset="0"/>
+        <GradientStop Color="#FFFF9A8B" Offset="0.33"/>
+        <GradientStop Color="#FFA8E6CF" Offset="0.66"/>
+        <GradientStop Color="#FFD4A574" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Sunset.WarmGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FFFF6B6B" Offset="0"/>
+        <GradientStop Color="#FFEE5A24" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Sunset.CoolGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FFA8E6CF" Offset="0"/>
+        <GradientStop Color="#FF88D8C0" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Sunset.ButtonGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFFF7F7F" Offset="0"/>
+        <GradientStop Color="#FFFF5722" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Sunset.HeaderGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FF4A154B" Offset="0"/>
+        <GradientStop Color="#FF8B2635" Offset="0.5"/>
+        <GradientStop Color="#FFFF5722" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Radial Gradients -->
+    <RadialGradientBrush x:Key="Sunset.RadialGradient" Center="0.5,0.5" RadiusX="1" RadiusY="1">
+        <GradientStop Color="#FFFF7F7F" Offset="0"/>
+        <GradientStop Color="#FFFF9A8B" Offset="0.5"/>
+        <GradientStop Color="#FFA8E6CF" Offset="1"/>
+    </RadialGradientBrush>
+    
+    <!-- Glass Effect Brushes -->
+    <LinearGradientBrush x:Key="Sunset.GlassEffect" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#66FFFFFF" Offset="0"/>
+        <GradientStop Color="#33FFFFFF" Offset="0.5"/>
+        <GradientStop Color="#11FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Shadow Brushes -->
+    <SolidColorBrush x:Key="Sunset.ShadowBrush" Color="#33000000"/>
+    <SolidColorBrush x:Key="Sunset.LightShadowBrush" Color="#22000000"/>
+
+</ResourceDictionary>

@@ -1,0 +1,82 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Ocean Blue Theme with Gradients -->
+    
+    <!-- Ocean Blue Primary Palette -->
+    <Color x:Key="OceanPrimary100">#E1F5FE</Color>
+    <Color x:Key="OceanPrimary200">#B3E5FC</Color>
+    <Color x:Key="OceanPrimary300">#81D4FA</Color>
+    <Color x:Key="OceanPrimary400">#4FC3F7</Color>
+    <Color x:Key="OceanPrimary500">#29B6F6</Color>
+    <Color x:Key="OceanPrimary600">#03A9F4</Color>
+    <Color x:Key="OceanPrimary700">#039BE5</Color>
+    <Color x:Key="OceanPrimary800">#0288D1</Color>
+    <Color x:Key="OceanPrimary900">#0277BD</Color>
+    
+    <!-- Ocean Secondary Palette -->
+    <Color x:Key="OceanSecondary100">#E8F5E8</Color>
+    <Color x:Key="OceanSecondary200">#C8E6C9</Color>
+    <Color x:Key="OceanSecondary300">#A5D6A7</Color>
+    <Color x:Key="OceanSecondary400">#81C784</Color>
+    <Color x:Key="OceanSecondary500">#66BB6A</Color>
+    <Color x:Key="OceanSecondary600">#4CAF50</Color>
+    <Color x:Key="OceanSecondary700">#43A047</Color>
+    <Color x:Key="OceanSecondary800">#388E3C</Color>
+    <Color x:Key="OceanSecondary900">#2E7D32</Color>
+    
+    <!-- Ocean Accent Palette -->
+    <Color x:Key="OceanAccent100">#FFF8E1</Color>
+    <Color x:Key="OceanAccent200">#FFECB3</Color>
+    <Color x:Key="OceanAccent300">#FFE082</Color>
+    <Color x:Key="OceanAccent400">#FFD54F</Color>
+    <Color x:Key="OceanAccent500">#FFCA28</Color>
+    <Color x:Key="OceanAccent600">#FFC107</Color>
+    <Color x:Key="OceanAccent700">#FFB300</Color>
+    <Color x:Key="OceanAccent800">#FFA000</Color>
+    <Color x:Key="OceanAccent900">#FF8F00</Color>
+    
+    <!-- Ocean Gradient Brushes -->
+    <LinearGradientBrush x:Key="OceanPrimaryGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource OceanPrimary300}" Offset="0"/>
+        <GradientStop Color="{StaticResource OceanPrimary600}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource OceanPrimary800}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="OceanSecondaryGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource OceanSecondary400}" Offset="0"/>
+        <GradientStop Color="{StaticResource OceanSecondary600}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="OceanBackgroundGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#F0F8FF" Offset="0"/>
+        <GradientStop Color="#E6F3FF" Offset="0.3"/>
+        <GradientStop Color="#CCE7FF" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <RadialGradientBrush x:Key="OceanWaveGradient" Center="0.3,0.3" RadiusX="1.2" RadiusY="1.2">
+        <GradientStop Color="{StaticResource OceanPrimary200}" Offset="0"/>
+        <GradientStop Color="{StaticResource OceanPrimary400}" Offset="0.6"/>
+        <GradientStop Color="{StaticResource OceanPrimary700}" Offset="1"/>
+    </RadialGradientBrush>
+    
+    <!-- Water Effect Gradient -->
+    <LinearGradientBrush x:Key="WaterEffectGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#20039BE5" Offset="0"/>
+        <GradientStop Color="#4003A9F4" Offset="0.3"/>
+        <GradientStop Color="#6029B6F6" Offset="0.6"/>
+        <GradientStop Color="#2003A9F4" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Solid Ocean Brushes -->
+    <SolidColorBrush x:Key="OceanPrimaryBrush" Color="{StaticResource OceanPrimary600}"/>
+    <SolidColorBrush x:Key="OceanSecondaryBrush" Color="{StaticResource OceanSecondary600}"/>
+    <SolidColorBrush x:Key="OceanAccentBrush" Color="{StaticResource OceanAccent600}"/>
+    
+    <!-- Ocean Text Colors -->
+    <SolidColorBrush x:Key="OceanPrimaryTextBrush" Color="#0D47A1"/>
+    <SolidColorBrush x:Key="OceanSecondaryTextBrush" Color="#1565C0"/>
+    <SolidColorBrush x:Key="OceanHintTextBrush" Color="#64B5F6"/>
+    <SolidColorBrush x:Key="OceanWhiteTextBrush" Color="White"/>
+    
+</ResourceDictionary>

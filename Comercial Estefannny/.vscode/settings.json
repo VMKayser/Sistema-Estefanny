@@ -1,0 +1,81 @@
+{
+  // ======= OPTIMIZACIÓN DE RENDIMIENTO =======
+  
+  // Limitar procesos en segundo plano
+  "extensions.autoUpdate": false,
+  "telemetry.telemetryLevel": "off",
+  "update.mode": "manual",
+  
+  // Optimizar IntelliSense
+  "editor.quickSuggestionsDelay": 100,
+  "editor.parameterHints.enabled": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  
+  // Limitar watchers de archivos
+  "files.watcherExclude": {
+    "**/bin/**": true,
+    "**/obj/**": true,
+    "**/packages/**": true,
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/Generated/**": true
+  },
+  
+  // Excluir archivos de búsqueda
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/packages": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/Generated": true,
+    "**/*.dll": true,
+    "**/*.exe": true,
+    "**/*.pdb": true
+  },
+  
+  // Configuración específica para C#
+  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": false,
+  "dotnet.navigation.navigateToDecompiledSources": false,
+  "dotnet.codeLens.enableReferencesCodeLens": false,
+  "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": "openFiles",
+  
+  // Optimizar Git
+  "git.autoRefresh": false,
+  "git.autoRepositoryDetection": false,
+  "git.fetchOnPull": false,
+  
+  // Configuración de GitLens (si lo mantienes)
+  "gitlens.codeLens.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.enabled": false,
+  "gitlens.blame.format": "${message|50?} ${agoOrDate|14-}",
+  "gitlens.blame.heatmap.enabled": false,
+  "gitlens.changes.locations": [],
+  
+  // Optimizar editor
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "editor.renderControlCharacters": false,
+  "editor.renderLineHighlight": "line",
+  "editor.occurrencesHighlight": "off",
+  "editor.selectionHighlight": false,
+  
+  // Configuración de terminal
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  
+  // Configuración específica para WPF/XAML
+  "files.associations": {
+    "*.xaml": "xml"
+  },
+  
+  // Limitar análisis automático
+  "problems.decorations.enabled": true,
+  "editor.codeActionsOnSave": {},
+  
+  // Configuración de workspace
+  "window.restoreWindows": "none",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false
+}

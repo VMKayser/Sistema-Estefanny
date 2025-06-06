@@ -1,11 +1,11 @@
-﻿using ClosedXML.Excel;
+using ClosedXML.Excel;
 using System.Collections.Generic;
 using System.IO;
 using Comercial_Estefannny.ViewModel;
 using System.Linq;
 using Comercial_Estefannny.View;
 
-namespace Comercial_Estefanny.Services
+namespace Comercial_Estefannny.Services
 {
     public class ExcelImportService
     {
@@ -31,27 +31,28 @@ namespace Comercial_Estefanny.Services
             return clientes;
         }
 
-        public List<proveedores> ImportarProveedoresDesdeExcel(string filePath)
+        public List<Comercial_Estefannny.ViewModel.Proveedores> ImportarProveedoresDesdeExcel(string filePath)
         {
-            var proveedores = new List<proveedores>();
+            var proveedoresList = new List<Comercial_Estefannny.ViewModel.Proveedores>();
 
             using (var workbook = new XLWorkbook(filePath))
             {
                 var worksheet = workbook.Worksheet(1); // Primer hoja del archivo Excel
                 foreach (var row in worksheet.RangeUsed().RowsUsed().Skip(1)) // Saltar encabezados
                 {
-                    var proveedor = new proveedores
+                    var proveedor = new Comercial_Estefannny.ViewModel.Proveedores
                     {
                         Nombre = row.Cell(1).GetString(),
                         Direccion = row.Cell(2).GetString(),
                         Telefono = row.Cell(3).GetString(),
                     };
-                    proveedores.Add(proveedor);
+                    proveedoresList.Add(proveedor);
                 }
             }
 
-            return proveedores;
+            return proveedoresList;
         }
+
         public List<Producto> ImportarProductosDesdeExcel(string filePath)
         {
             var productos = new List<Producto>();

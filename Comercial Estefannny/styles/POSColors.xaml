@@ -1,0 +1,269 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- =============================================== -->
+    <!-- PALETA POS COSMÉTICOS - REGLA 60-30-10        -->
+    <!-- =============================================== -->
+    
+    <!-- BASE COLORS (60% - Fondos principales, neutrales) -->
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="BackgroundPrimary">#F5F5F5</Color>
+    <Color x:Key="BackgroundSecondary">#FFFFFF</Color>
+    <Color x:Key="BorderLight">#E0E0E0</Color>
+    <Color x:Key="TextPrimary">#333333</Color>
+    <Color x:Key="TextSecondary">#666666</Color>
+    <Color x:Key="TextMuted">#999999</Color>
+    
+    <!-- SUPPORT COLORS (30% - Navegación, paneles, headers) -->    <!-- Variaciones del Rosa Principal -->
+    <Color x:Key="RosaSuave">#F7D6E0</Color>
+    <Color x:Key="RosaMenuActivo">#EEC3D3</Color>  <!-- Para items activos en el menú -->
+    <Color x:Key="RosaHover">#FDE8F0</Color>       <!-- Para efectos hover suaves -->
+    <Color x:Key="RosaCard">#FFF8FB</Color>        <!-- Para fondos de tarjetas -->
+    <Color x:Key="RosaIndicador">#E91E63</Color>   <!-- Para indicadores visuales activos -->
+    
+    <!-- Variaciones de Lavanda -->
+    <Color x:Key="LavandaClaro">#E6E6FA</Color>
+    <Color x:Key="LavandaHeader">#E1DCF0</Color>   <!-- Para headers -->
+    <Color x:Key="LavandaCard">#F5F3FF</Color>     <!-- Para tarjetas categoría -->
+      <!-- Variaciones de Azul Pastel -->
+    <Color x:Key="AzulPastel">#D6ECFF</Color>
+    <Color x:Key="AzulGrafica">#90CAF9</Color>     <!-- Para gráficas suaves -->
+    <Color x:Key="AzulCard">#E3F2FD</Color>        <!-- Para fondos azules -->
+    <Color x:Key="AzulSuaveGrafica">#BBDEFB</Color> <!-- Azul más suave para gráficas -->
+      <!-- Otros colores de soporte -->
+    <Color x:Key="DuraznoSuave">#FFE0D6</Color>
+    <Color x:Key="DuraznoCard">#FFF8E1</Color>     <!-- Para alertas suaves -->
+    <Color x:Key="VerdeMenta">#D0F0E0</Color>
+    <Color x:Key="VerdeMentaCard">#E8F5E8</Color>  <!-- Para fondos de éxito -->
+    <Color x:Key="MalvaSuave">#C8A2C8</Color>
+    <Color x:Key="MalvaCard">#F3E5F5</Color>       <!-- Para análisis de ganancias -->
+    <Color x:Key="AmarilloSuave">#FFF8E1</Color>   <!-- Para alertas de stock -->
+    <Color x:Key="AmarilloCard">#FFFDE7</Color>    <!-- Fondo para alertas de stock -->
+    
+    <!-- ACCENT COLORS (10% - Acciones importantes, estados) -->
+    <Color x:Key="RosaFuerte">#E91E63</Color>
+    <Color x:Key="RosaAccent">#AD1457</Color>      <!-- Rosa más intenso para acentos -->
+    <Color x:Key="DoradoSuave">#D4AF37</Color>
+    <Color x:Key="DoradoAccent">#B8860B</Color>    <!-- Dorado más intenso -->
+    <Color x:Key="CoralClaro">#FFB6A6</Color>
+    <Color x:Key="CoralAccent">#FF8A65</Color>     <!-- Coral más vibrante -->
+    
+    <!-- Colores de estado específicos para cosméticos -->
+    <Color x:Key="SuccessGreen">#4CAF50</Color>
+    <Color x:Key="SuccessLight">#E8F5E8</Color>
+    <Color x:Key="WarningOrange">#FF9800</Color>
+    <Color x:Key="WarningLight">#FFF3E0</Color>
+    <Color x:Key="DangerRed">#F44336</Color>
+    <Color x:Key="DangerLight">#FFEBEE</Color>
+    <Color x:Key="InfoBlue">#2196F3</Color>
+    <Color x:Key="InfoLight">#E3F2FD</Color>
+    
+    <!-- =============================================== -->
+    <!-- COLORES ESPECÍFICOS PARA POS COSMÉTICOS       -->
+    <!-- =============================================== -->
+    
+    <!-- Categorías de productos -->
+    <Color x:Key="ProductoNatural">#D0F0E0</Color>
+    <Color x:Key="ProductoPremium">#F7D6E0</Color>
+    <Color x:Key="ProductoJoven">#FFB6A6</Color>
+    <Color x:Key="ProductoMaduro">#C8A2C8</Color>
+    
+    <!-- Estados de inventario -->
+    <Color x:Key="StockAlto">#4CAF50</Color>
+    <Color x:Key="StockMedio">#FF9800</Color>
+    <Color x:Key="StockBajo">#F44336</Color>
+    <Color x:Key="SinStock">#9E9E9E</Color>
+    
+    <!-- Promociones y descuentos -->
+    <Color x:Key="PromocionActiva">#E91E63</Color>
+    <Color x:Key="DescuentoEspecial">#D4AF37</Color>
+    <Color x:Key="OfertaLimitada">#FF5722</Color>
+    
+    <!-- Tipos de cliente -->
+    <Color x:Key="ClienteVIP">#D4AF37</Color>
+    <Color x:Key="ClienteFrecuente">#E91E63</Color>
+    <Color x:Key="ClienteNuevo">#2196F3</Color>
+    
+    <!-- =============================================== -->
+    <!-- SOLID COLOR BRUSHES                           -->
+    <!-- =============================================== -->
+    
+    <!-- Base Brushes (60%) -->
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+    <SolidColorBrush x:Key="BackgroundPrimaryBrush" Color="{StaticResource BackgroundPrimary}"/>
+    <SolidColorBrush x:Key="BackgroundSecondaryBrush" Color="{StaticResource BackgroundSecondary}"/>
+    <SolidColorBrush x:Key="BorderLightBrush" Color="{StaticResource BorderLight}"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}"/>
+    <SolidColorBrush x:Key="TextMutedBrush" Color="{StaticResource TextMuted}"/>
+      <!-- Support Brushes (30%) -->
+    <SolidColorBrush x:Key="RosaSuaveBrush" Color="{StaticResource RosaSuave}"/>
+    <SolidColorBrush x:Key="RosaMenuActivoBrush" Color="{StaticResource RosaMenuActivo}"/>
+    <SolidColorBrush x:Key="RosaHoverBrush" Color="{StaticResource RosaHover}"/>
+    <SolidColorBrush x:Key="RosaCardBrush" Color="{StaticResource RosaCard}"/>
+    <SolidColorBrush x:Key="RosaIndicadorBrush" Color="{StaticResource RosaIndicador}"/>
+    
+    <SolidColorBrush x:Key="LavandaClaroBrush" Color="{StaticResource LavandaClaro}"/>
+    <SolidColorBrush x:Key="LavandaHeaderBrush" Color="{StaticResource LavandaHeader}"/>
+    <SolidColorBrush x:Key="LavandaCardBrush" Color="{StaticResource LavandaCard}"/>
+    
+    <SolidColorBrush x:Key="AzulPastelBrush" Color="{StaticResource AzulPastel}"/>
+    <SolidColorBrush x:Key="AzulGraficaBrush" Color="{StaticResource AzulGrafica}"/>
+    <SolidColorBrush x:Key="AzulCardBrush" Color="{StaticResource AzulCard}"/>
+    <SolidColorBrush x:Key="AzulSuaveGraficaBrush" Color="{StaticResource AzulSuaveGrafica}"/>
+    
+    <SolidColorBrush x:Key="DuraznoSuaveBrush" Color="{StaticResource DuraznoSuave}"/>
+    <SolidColorBrush x:Key="DuraznoCardBrush" Color="{StaticResource DuraznoCard}"/>
+    <SolidColorBrush x:Key="VerdeMentaBrush" Color="{StaticResource VerdeMenta}"/>
+    <SolidColorBrush x:Key="VerdeMentaCardBrush" Color="{StaticResource VerdeMentaCard}"/>
+    <SolidColorBrush x:Key="MalvaSuaveBrush" Color="{StaticResource MalvaSuave}"/>
+    <SolidColorBrush x:Key="MalvaCardBrush" Color="{StaticResource MalvaCard}"/>
+    <SolidColorBrush x:Key="AmarilloSuaveBrush" Color="{StaticResource AmarilloSuave}"/>
+    <SolidColorBrush x:Key="AmarilloCardBrush" Color="{StaticResource AmarilloCard}"/>
+    
+    <!-- Accent Brushes (10%) -->
+    <SolidColorBrush x:Key="RosaFuerteBrush" Color="{StaticResource RosaFuerte}"/>
+    <SolidColorBrush x:Key="RosaAccentBrush" Color="{StaticResource RosaAccent}"/>
+    <SolidColorBrush x:Key="DoradoSuaveBrush" Color="{StaticResource DoradoSuave}"/>
+    <SolidColorBrush x:Key="DoradoAccentBrush" Color="{StaticResource DoradoAccent}"/>
+    <SolidColorBrush x:Key="CoralClaroBrush" Color="{StaticResource CoralClaro}"/>
+    <SolidColorBrush x:Key="CoralAccentBrush" Color="{StaticResource CoralAccent}"/>
+    
+    <!-- Status Brushes -->
+    <SolidColorBrush x:Key="SuccessGreenBrush" Color="{StaticResource SuccessGreen}"/>
+    <SolidColorBrush x:Key="SuccessLightBrush" Color="{StaticResource SuccessLight}"/>
+    <SolidColorBrush x:Key="WarningOrangeBrush" Color="{StaticResource WarningOrange}"/>
+    <SolidColorBrush x:Key="WarningLightBrush" Color="{StaticResource WarningLight}"/>
+    <SolidColorBrush x:Key="DangerRedBrush" Color="{StaticResource DangerRed}"/>
+    <SolidColorBrush x:Key="DangerLightBrush" Color="{StaticResource DangerLight}"/>
+    <SolidColorBrush x:Key="InfoBlueBrush" Color="{StaticResource InfoBlue}"/>
+    <SolidColorBrush x:Key="InfoLightBrush" Color="{StaticResource InfoLight}"/>
+    
+    <!-- Specific POS Brushes -->
+    <SolidColorBrush x:Key="ProductoNaturalBrush" Color="{StaticResource ProductoNatural}"/>
+    <SolidColorBrush x:Key="ProductoPremiumBrush" Color="{StaticResource ProductoPremium}"/>
+    <SolidColorBrush x:Key="ProductoJovenBrush" Color="{StaticResource ProductoJoven}"/>
+    <SolidColorBrush x:Key="ProductoMaduroBrush" Color="{StaticResource ProductoMaduro}"/>
+    
+    <SolidColorBrush x:Key="StockAltoBrush" Color="{StaticResource StockAlto}"/>
+    <SolidColorBrush x:Key="StockMedioBrush" Color="{StaticResource StockMedio}"/>
+    <SolidColorBrush x:Key="StockBajoBrush" Color="{StaticResource StockBajo}"/>
+    <SolidColorBrush x:Key="SinStockBrush" Color="{StaticResource SinStock}"/>
+    
+    <SolidColorBrush x:Key="PromocionActivaBrush" Color="{StaticResource PromocionActiva}"/>
+    <SolidColorBrush x:Key="DescuentoEspecialBrush" Color="{StaticResource DescuentoEspecial}"/>
+    <SolidColorBrush x:Key="OfertaLimitadaBrush" Color="{StaticResource OfertaLimitada}"/>
+    
+    <SolidColorBrush x:Key="ClienteVIPBrush" Color="{StaticResource ClienteVIP}"/>
+    <SolidColorBrush x:Key="ClienteFrecuenteBrush" Color="{StaticResource ClienteFrecuente}"/>
+    <SolidColorBrush x:Key="ClienteNuevoBrush" Color="{StaticResource ClienteNuevo}"/>
+    
+    <!-- =============================================== -->
+    <!-- GRADIENTES ESPECÍFICOS PARA COSMÉTICOS       -->
+    <!-- =============================================== -->
+    
+    <!-- Gradiente principal (sidebar) -->
+    <LinearGradientBrush x:Key="SidebarGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{StaticResource RosaSuave}" Offset="0"/>
+        <GradientStop Color="{StaticResource LavandaClaro}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Gradiente de éxito/ventas -->
+    <LinearGradientBrush x:Key="SuccessGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="{StaticResource SuccessGreen}" Offset="0"/>
+        <GradientStop Color="{StaticResource VerdeMenta}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Gradiente de acción principal -->
+    <LinearGradientBrush x:Key="ActionGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="{StaticResource RosaFuerte}" Offset="0"/>
+        <GradientStop Color="{StaticResource CoralClaro}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Gradiente dorado (VIP/Premium) -->
+    <LinearGradientBrush x:Key="PremiumGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="{StaticResource DoradoSuave}" Offset="0"/>
+        <GradientStop Color="#F4E58C" Offset="1"/>
+    </LinearGradientBrush>
+      <!-- Gradiente de fondo suave -->
+    <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource White}" Offset="0"/>
+        <GradientStop Color="{StaticResource BackgroundPrimary}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Gradiente para gráficas suaves -->
+    <LinearGradientBrush x:Key="GraphicsSuaveGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="{StaticResource AzulSuaveGrafica}" Offset="0"/>
+        <GradientStop Color="{StaticResource RosaHover}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Gradiente para tarjetas de alerta -->
+    <LinearGradientBrush x:Key="AlertCardGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="{StaticResource AmarilloCard}" Offset="0"/>
+        <GradientStop Color="{StaticResource DuraznoCard}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Gradiente para tarjetas de categoría -->
+    <LinearGradientBrush x:Key="CategoryCardGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="{StaticResource AzulCard}" Offset="0"/>
+        <GradientStop Color="{StaticResource LavandaCard}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Gradiente para tarjetas de ganancias -->
+    <LinearGradientBrush x:Key="ProfitCardGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="{StaticResource MalvaCard}" Offset="0"/>
+        <GradientStop Color="{StaticResource VerdeMentaCard}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- =============================================== -->
+    <!-- COLORES PARA HOVER Y ESTADOS                   -->
+    <!-- =============================================== -->
+      <!-- Hover states -->
+    <Color x:Key="HoverLight">#F0F0F0</Color>
+    <Color x:Key="HoverRosa">#F9E5EA</Color>
+    <Color x:Key="HoverLavanda">#F2F2FE</Color>
+    <Color x:Key="HoverDurazno">#FFF0EA</Color>
+    <Color x:Key="HoverVerde">#E8F5E8</Color>      <!-- Para hover en elementos de éxito -->
+    <Color x:Key="HoverAmarillo">#FFFDE7</Color>   <!-- Para hover en alertas -->
+    
+    <!-- Active states -->
+    <Color x:Key="ActiveRosa">#D81B60</Color>
+    <Color x:Key="ActiveDorado">#B7941C</Color>
+    <Color x:Key="ActiveCoral">#FF8A65</Color>
+    <Color x:Key="ActiveVerde">#388E3C</Color>     <!-- Para elementos activos de éxito -->
+    
+    <!-- Estados de indicador visual para menú lateral -->
+    <Color x:Key="IndicadorMenuActivo">#E91E63</Color>
+    <Color x:Key="IndicadorSecundario">#AD1457</Color>
+      <!-- Focus states -->
+    <Color x:Key="FocusRosa">#F8BBD9</Color>
+    <Color x:Key="FocusLavanda">#D9D9FF</Color>
+    <Color x:Key="FocusDurazno">#FFCCB3</Color>
+    <Color x:Key="FocusBlue">#B3D9FF</Color>
+    
+    <!-- Additional colors for POS system -->
+    <Color x:Key="MoneyGreen">#27AE60</Color>
+    <Color x:Key="LossRed">#E74C3C</Color>
+    
+    <!-- =============================================== -->
+    <!-- ADDITIONAL BRUSHES FOR COMPONENT STYLES       -->
+    <!-- =============================================== -->
+      <!-- Missing brushes for POSComponentStyles -->
+    <SolidColorBrush x:Key="ActiveRosaBrush" Color="{StaticResource ActiveRosa}"/>
+    <SolidColorBrush x:Key="HoverLightBrush" Color="{StaticResource HoverLight}"/>
+    <SolidColorBrush x:Key="HoverRosaBrush" Color="{StaticResource HoverRosa}"/>
+    <SolidColorBrush x:Key="HoverVerdeBrush" Color="{StaticResource HoverVerde}"/>
+    <SolidColorBrush x:Key="HoverAmarilloBrush" Color="{StaticResource HoverAmarillo}"/>
+    <SolidColorBrush x:Key="FocusBlueBrush" Color="{StaticResource FocusBlue}"/>
+    <SolidColorBrush x:Key="MoneyGreenBrush" Color="{StaticResource MoneyGreen}"/>
+    <SolidColorBrush x:Key="LossRedBrush" Color="{StaticResource LossRed}"/>
+    <SolidColorBrush x:Key="ActiveVerdeBrush" Color="{StaticResource ActiveVerde}"/>
+    <SolidColorBrush x:Key="IndicadorMenuActivoBrush" Color="{StaticResource IndicadorMenuActivo}"/>
+    <SolidColorBrush x:Key="IndicadorSecundarioBrush" Color="{StaticResource IndicadorSecundario}"/>
+    
+    <!-- Brushes for backward compatibility -->
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessGreen}"/>
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource RosaFuerte}"/>
+    <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningOrange}"/>
+    
+</ResourceDictionary>

@@ -15,13 +15,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Comercial_Estefannny.ViewModel;
+using ViewModelProveedores = Comercial_Estefannny.ViewModel.Proveedores; // Alias for ViewModel
 
 namespace Comercial_Estefannny.View
 {
-    public partial class Proveedores : UserControl
+    public partial class Proveedores : System.Windows.Controls.UserControl
     {
         private ICollectionView ProveedoresView;
-        public ObservableCollection<proveedores> ProveedoresList { get; set; } = new ObservableCollection<proveedores>();
+        public ObservableCollection<ViewModelProveedores> ProveedoresList { get; set; } = new ObservableCollection<ViewModelProveedores>();
 
         public Proveedores()
         {
@@ -39,7 +40,7 @@ namespace Comercial_Estefannny.View
             ProveedoresList.Clear();
 
             // Obtener los proveedores de la base de datos y agregarlos a la colección
-            foreach (var proveedor in proveedores.Obtenerproveedores())
+            foreach (var proveedor in ViewModelProveedores.Obtenerproveedores()) // Use alias and correct static call
             {
                 ProveedoresList.Add(proveedor);
             }
@@ -58,12 +59,12 @@ namespace Comercial_Estefannny.View
             // Validar que el nombre esté ingresado
             if (string.IsNullOrEmpty(nombreProveedor))
             {
-                MessageBox.Show("Por favor, ingrese el nombre del proveedor.");
+                System.Windows.MessageBox.Show("Por favor, ingrese el nombre del proveedor.");
                 return;
             }
 
             // Crear un objeto Proveedor con los datos ingresados
-           proveedores nuevoProveedor = new proveedores
+           ViewModelProveedores nuevoProveedor = new ViewModelProveedores // Use alias
             {
                 Nombre = nombreProveedor,
                 Direccion = direccion,
@@ -73,7 +74,7 @@ namespace Comercial_Estefannny.View
             // Llamar al método del ViewModel para insertar el proveedor en la base de datos
             nuevoProveedor.InsertarProveedor();
 
-            MessageBox.Show("Proveedor agregado exitosamente.");
+            System.Windows.MessageBox.Show("Proveedor agregado exitosamente.");
 
             // Actualizar la lista de proveedores
             CargarProveedores();
@@ -88,7 +89,7 @@ namespace Comercial_Estefannny.View
             // Validar que el nombre esté ingresado
             if (string.IsNullOrEmpty(nombreProveedor))
             {
-                MessageBox.Show("Por favor, ingrese el nombre del proveedor a eliminar.");
+                System.Windows.MessageBox.Show("Por favor, ingrese el nombre del proveedor a eliminar.");
                 return;
             }
 
@@ -97,11 +98,11 @@ namespace Comercial_Estefannny.View
             if (proveedor != null)
             {
                 proveedor.EliminarProveedor();
-                MessageBox.Show("Proveedor eliminado exitosamente.");
+                System.Windows.MessageBox.Show("Proveedor eliminado exitosamente.");
             }
             else
             {
-                MessageBox.Show("Proveedor no encontrado.");
+                System.Windows.MessageBox.Show("Proveedor no encontrado.");
             }
 
             // Actualizar la lista de proveedores
@@ -119,7 +120,7 @@ namespace Comercial_Estefannny.View
             // Validar que el nombre esté ingresado
             if (string.IsNullOrEmpty(nombreProveedor))
             {
-                MessageBox.Show("Por favor, ingrese el nombre del proveedor.");
+                System.Windows.MessageBox.Show("Por favor, ingrese el nombre del proveedor.");
                 return;
             }
 
@@ -132,11 +133,11 @@ namespace Comercial_Estefannny.View
 
                 proveedor.ActualizarProveedor();  // Método en tu ViewModel para actualizar el proveedor
 
-                MessageBox.Show("Proveedor actualizado exitosamente.");
+                System.Windows.MessageBox.Show("Proveedor actualizado exitosamente.");
             }
             else
             {
-                MessageBox.Show("Proveedor no encontrado.");
+                System.Windows.MessageBox.Show("Proveedor no encontrado.");
             }
 
             // Actualizar la lista de proveedores
@@ -157,7 +158,7 @@ namespace Comercial_Estefannny.View
         {
             if (ProveedoresListView.SelectedItem != null)
             {
-                proveedores proveedorSeleccionado = (proveedores)ProveedoresListView.SelectedItem;
+                ViewModelProveedores proveedorSeleccionado = (ViewModelProveedores)ProveedoresListView.SelectedItem; // Use alias
 
                 // Rellenar los campos con los datos del proveedor seleccionado
                 TextNombreProveedor.Text = proveedorSeleccionado.Nombre;
@@ -183,17 +184,17 @@ namespace Comercial_Estefannny.View
                 try
                 {
                     // Asumimos que tienes un método en tu ViewModel para importar desde Excel
-                    var proveedoresviewModel = new proveedores();
+                    var proveedoresviewModel = new ViewModelProveedores(); // Use alias
                     proveedoresviewModel.ImportarProveedoresDesdeExcel(filePath);
 
-                    MessageBox.Show("Proveedores importados exitosamente.");
+                    System.Windows.MessageBox.Show("Proveedores importados exitosamente.");
 
                     // Actualizar la lista de clientes después de la importación
                     CargarProveedores();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al importar los datos: {ex.Message}");
+                    System.Windows.MessageBox.Show($"Error al importar los datos: {ex.Message}");
                 }
             }
 

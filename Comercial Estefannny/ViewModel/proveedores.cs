@@ -5,23 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Collections.ObjectModel;
-using Comercial_Estefanny.Services;
+using Comercial_Estefannny.Services;
 using System.Configuration;
 
 namespace Comercial_Estefannny.ViewModel
-{
-    public class proveedores : ViewModelbase
+{    public class Proveedores : ViewModelbase
     {
         // Atributos
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
+        public double Deuda { get; set; }
  
         // Caché de proveedores
-        public static ObservableCollection<proveedores> proveedoresCache = new ObservableCollection<proveedores>();
-        private ExcelImportService _excelImportService = new ExcelImportService();
+        public static ObservableCollection<Proveedores> proveedoresCache = new ObservableCollection<Proveedores>();
+        private static ExcelImportService _excelImportService = new ExcelImportService();
 
-        public proveedores()
+        public Proveedores()
         {
         }
 
@@ -33,34 +34,46 @@ namespace Comercial_Estefannny.ViewModel
         }
 
         // Método para obtener los proveedores, usando caché si ya existe
-        public static ObservableCollection<proveedores> Obtenerproveedores()
+        public static ObservableCollection<Proveedores> Obtenerproveedores()
         {
             // Si el caché está vacío, cargar los datos de la base de datos
             if (!proveedoresCache.Any())
             {
-                using (var conn = GetConnection())
-                {
-                    conn.Open();
-                    var cmd = new SQLiteCommand("SELECT * FROM proveedor", conn);
-                    var reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        var proveedor = new proveedores
-                        {
-                            Nombre = reader["nombre_proveedor"].ToString(),
-                            Direccion = reader["direccion"].ToString(),
-                            Telefono = reader["telefono"].ToString(),
-                        };
-
-                        // Añadir proveedor al caché
-                        proveedoresCache.Add(proveedor);
-                    }
-                }
+                RefrescarCache();
             }
 
             // Regresar los proveedores desde el caché en una ObservableCollection
-            return new ObservableCollection<proveedores>(proveedoresCache);
+            return proveedoresCache;
+        }
+
+        public static ObservableCollection<Proveedores> ObtenerProveedores()
+        {
+            return Obtenerproveedores();
+        }
+
+        // Método para refrescar la caché
+        public static void RefrescarCache()
+        {
+            proveedoresCache.Clear();
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT * FROM proveedor", conn);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    var proveedor = new Proveedores
+                    {
+                        Nombre = reader["nombre_proveedor"].ToString(),
+                        Direccion = reader["direccion"].ToString(),
+                        Telefono = reader["telefono"].ToString(),
+                    };
+
+                    // Añadir proveedor al caché
+                    proveedoresCache.Add(proveedor);
+                }
+            }
         }
 
         // Método para agregar un proveedor

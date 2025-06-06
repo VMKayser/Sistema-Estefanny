@@ -1,0 +1,84 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Dark Theme Colors with Gradients -->
+    
+    <!-- Primary Dark Palette -->
+    <Color x:Key="DarkPrimary100">#1E1E2E</Color>
+    <Color x:Key="DarkPrimary200">#2A2A3A</Color>
+    <Color x:Key="DarkPrimary300">#363649</Color>
+    <Color x:Key="DarkPrimary400">#424257</Color>
+    <Color x:Key="DarkPrimary500">#4E4E66</Color>
+    <Color x:Key="DarkPrimary600">#5A5A74</Color>
+    <Color x:Key="DarkPrimary700">#666683</Color>
+    <Color x:Key="DarkPrimary800">#727291</Color>
+    <Color x:Key="DarkPrimary900">#7E7EA0</Color>
+    
+    <!-- Accent Colors for Dark Theme -->
+    <Color x:Key="DarkAccent100">#BB86FC</Color>
+    <Color x:Key="DarkAccent200">#A875FC</Color>
+    <Color x:Key="DarkAccent300">#9564FC</Color>
+    <Color x:Key="DarkAccent400">#8253FC</Color>
+    <Color x:Key="DarkAccent500">#6F42C1</Color>
+    <Color x:Key="DarkAccent600">#5C359A</Color>
+    <Color x:Key="DarkAccent700">#492873</Color>
+    <Color x:Key="DarkAccent800">#361B4C</Color>
+    <Color x:Key="DarkAccent900">#230E25</Color>
+    
+    <!-- Secondary Colors -->
+    <Color x:Key="DarkSecondary100">#03DAC6</Color>
+    <Color x:Key="DarkSecondary200">#02C7B6</Color>
+    <Color x:Key="DarkSecondary300">#01B4A6</Color>
+    <Color x:Key="DarkSecondary400">#00A195</Color>
+    <Color x:Key="DarkSecondary500">#008E85</Color>
+    <Color x:Key="DarkSecondary600">#007B74</Color>
+    <Color x:Key="DarkSecondary700">#006864</Color>
+    <Color x:Key="DarkSecondary800">#005553</Color>
+    <Color x:Key="DarkSecondary900">#004243</Color>
+    
+    <!-- Surface Colors -->
+    <Color x:Key="DarkSurface">#121212</Color>
+    <Color x:Key="DarkSurfaceVariant">#1E1E1E</Color>
+    <Color x:Key="DarkBackground">#0F0F0F</Color>
+    
+    <!-- Gradient Brushes for Dark Theme -->
+    <LinearGradientBrush x:Key="DarkPrimaryGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource DarkAccent300}" Offset="0"/>
+        <GradientStop Color="{StaticResource DarkAccent500}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="DarkSecondaryGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource DarkSecondary300}" Offset="0"/>
+        <GradientStop Color="{StaticResource DarkSecondary500}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="DarkBackgroundGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource DarkBackground}" Offset="0"/>
+        <GradientStop Color="{StaticResource DarkSurface}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="DarkPanelGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{StaticResource DarkSurfaceVariant}" Offset="0"/>
+        <GradientStop Color="{StaticResource DarkSurface}" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Glass Effect -->
+    <LinearGradientBrush x:Key="DarkGlassGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#40FFFFFF" Offset="0"/>
+        <GradientStop Color="#10FFFFFF" Offset="0.5"/>
+        <GradientStop Color="#05FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!-- Solid Brushes -->
+    <SolidColorBrush x:Key="DarkPrimaryBrush" Color="{StaticResource DarkAccent100}"/>
+    <SolidColorBrush x:Key="DarkSecondaryBrush" Color="{StaticResource DarkSecondary100}"/>
+    <SolidColorBrush x:Key="DarkSurfaceBrush" Color="{StaticResource DarkSurface}"/>
+    <SolidColorBrush x:Key="DarkBackgroundBrush" Color="{StaticResource DarkBackground}"/>
+    
+    <!-- Text Colors for Dark Theme -->
+    <SolidColorBrush x:Key="DarkPrimaryTextBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="DarkSecondaryTextBrush" Color="#B3FFFFFF"/>
+    <SolidColorBrush x:Key="DarkHintTextBrush" Color="#66FFFFFF"/>
+    <SolidColorBrush x:Key="DarkDisabledTextBrush" Color="#3DFFFFFF"/>
+    
+</ResourceDictionary>

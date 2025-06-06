@@ -15,15 +15,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
-
-
-
+using System.ComponentModel;
 
 namespace Comercial_Estefannny.View
 {
-    public partial class VentasView : UserControl
+    public partial class VentasView : System.Windows.Controls.UserControl, INotifyPropertyChanged
     {
         // Mantener las listas de strings
         public List<string> Marcas { get; set; }
@@ -32,12 +28,28 @@ namespace Comercial_Estefannny.View
         public ObservableCollection<Producto> Productos1 { get; set; }
         public ObservableCollection<ClientesC> clientesCache { get; set; }
         public ObservableCollection<ProductoVenta> ProductosDeVenta { get; set; }
-        private ProductoVenta productoSeleccionado;
-        // Variables de los ComboBox seleccionados
-        private Marca selectedMarca;
-        private Categoria selectedCategoria;
-        private Producto selectedProducto;
-        private VarianteC selectedVariante;
+        private ProductoVenta _productoSeleccionado;
+
+        private DateTime? _fecha;
+        public DateTime? Fecha
+        {
+            get => _fecha;
+            set { _fecha = value; OnPropertyChanged(nameof(Fecha)); }
+        }
+
+        private decimal _precioVenta;
+        public decimal PrecioVenta
+        {
+            get => _precioVenta;
+            set { _precioVenta = value; OnPropertyChanged(nameof(PrecioVenta)); }
+        }
+
+        public ProductoVenta productoSeleccionado
+        {
+            get => _productoSeleccionado;
+            set { _productoSeleccionado = value; OnPropertyChanged(nameof(productoSeleccionado)); }
+        }
+
         public decimal TotalAPagar
         {
             get
@@ -46,36 +58,33 @@ namespace Comercial_Estefannny.View
             }
         }
 
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public VentasView()
         {
             InitializeComponent();
-
-            // Asignar el DataContext a sí mismo para que los ComboBox puedan enlazar las propiedades directamente.
-            DataContext = this; // Setting ViewModel to DataContext
-
-
-            // Cargar datos de la base de datos
-            Marcas = Marca.ObtenerMarcas(); // Lista de marcas (string)
-            Categorias = Categoria.ObtenerCategorias(); // Lista de categorías (string)
-            Variantes = VarianteC.ObtenerVarianteCs(); // Lista de variantes (string)
-            Productos1 = new ObservableCollection<Producto>(Producto.ObtenerProductos()); // Lista de productos
-            clientesCache = new ObservableCollection<ClientesC>(ClientesC.ObtenerClientes()); // Lista de clientes
-                                                                                              // Inicializar la colección de productos
+            DataContext = this;
+            Marcas = Marca.ObtenerMarcas();
+            Categorias = Categoria.ObtenerCategorias();
+            Variantes = VarianteC.ObtenerVarianteCs();
+            Productos1 = Producto.ObtenerProductos(); // Usar caché directamente
+            clientesCache = Comercial_Estefannny.ViewModel.ClientesC.ObtenerClientes(); // Usar caché directamente
             ProductosDeVenta = new ObservableCollection<ProductoVenta>();
-            // Asignar la colección a la propiedad ItemsSource de la ListView
-           
         }
+
         private void OnProductosDeVentaChanged()
         {
             TextTotalApagar.Text = TotalAPagar.ToString("C");
         }
 
-        private void ComboProducto_PreviewKeyUp(object sender, KeyEventArgs e)
+        private void ComboProducto_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             ComboProducto.IsDropDownOpen = true; // Mantiene el ComboBox abierto mientras escribes
         }
-
 
         // Función que se ejecuta cuando se selecciona un producto
         private void ComboProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -111,7 +120,6 @@ namespace Comercial_Estefannny.View
             }
         }
 
-
         // Otros métodos de los botones (puedes agregar tu lógica aquí)
         private void BotonAgregar_Click(object sender, RoutedEventArgs e)
         {
@@ -140,11 +148,9 @@ namespace Comercial_Estefannny.View
             }
             else
             {
-                MessageBox.Show("Seleccione un producto e ingrese el precio para agregar.");
+                System.Windows.MessageBox.Show("Seleccione un producto e ingrese el precio para agregar.");
             }
         }
-
-
 
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
         {
@@ -157,10 +163,9 @@ namespace Comercial_Estefannny.View
             }
             else
             {
-                MessageBox.Show("Seleccione un producto de la lista para eliminar.");
+                System.Windows.MessageBox.Show("Seleccione un producto de la lista para eliminar.");
             }
         }
-
 
         private void BotonEditar_Click(object sender, RoutedEventArgs e)
         {
@@ -176,24 +181,20 @@ namespace Comercial_Estefannny.View
                 ProductosListView.ItemsSource = null;
                 ProductosListView.ItemsSource = ProductosDeVenta;
                 OnProductosDeVentaChanged();
-                MessageBox.Show("Producto actualizado correctamente.");
+                System.Windows.MessageBox.Show("Producto actualizado correctamente.");
             }
             else
             {
-                MessageBox.Show("Seleccione un producto de la lista para editar.");
+                System.Windows.MessageBox.Show("Seleccione un producto de la lista para editar.");
             }
         }
-
-
-
-
 
         private void BotonRegistrar_Click(object sender, RoutedEventArgs e)
         {
             // Verificar si hay productos para registrar
             if (ProductosDeVenta.Count == 0)
             {
-                MessageBox.Show("No hay productos en la venta.");
+                System.Windows.MessageBox.Show("No hay productos en la venta.");
                 return;
             }
 
@@ -201,7 +202,6 @@ namespace Comercial_Estefannny.View
             DateTime fechaVenta = FechaVenta.SelectedDate ?? DateTime.Now;
             string nombreCliente = (ComboCliente.SelectedItem as ClientesC)?.Nombre;
             string tipoPago = ((ComboTipoDePago.SelectedItem as ComboBoxItem)?.Content as TextBlock)?.Text;
-
 
             // Verificar si el cliente y el tipo de pago están seleccionados
             if (string.IsNullOrEmpty(nombreCliente))
@@ -215,41 +215,28 @@ namespace Comercial_Estefannny.View
 
             if (string.IsNullOrEmpty(tipoPago))
             {
-                MessageBox.Show("Por favor, seleccione un tipo de pago.");
+                System.Windows.MessageBox.Show("Por favor, seleccione un tipo de pago.");
                 return;
             }
 
             // Verificar que el cliente y el tipo de pago están correctamente seleccionados
             if (string.IsNullOrEmpty(nombreCliente) || string.IsNullOrEmpty(tipoPago))
             {
-                MessageBox.Show("Por favor, seleccione un cliente y un tipo de pago.");
+                System.Windows.MessageBox.Show("Por favor, seleccione un cliente y un tipo de pago.");
                 return;
             }
 
             // Llamar al método RegistrarVenta pasando los productos de la venta
             Ventas ventas = new Ventas(); // Asegúrate de tener acceso a la clase Ventas
             ventas.RegistrarVenta(fechaVenta, nombreCliente, tipoPago, ProductosDeVenta);
-
-            // Limpiar la lista de productos de venta después de registrar
-            ProductosDeVenta.Clear();
-            OnProductosDeVentaChanged();
-
-            MessageBox.Show("Venta registrada correctamente.");
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void ComboProducto_GotFocus(object sender, RoutedEventArgs e)
         {
-            // Abre el dropdown automáticamente cuando el ComboBox recibe el foco
             ComboProducto.IsDropDownOpen = true;
         }
 
-
-
-        private void ComboProducto_FiltrarBusqueda(object sender, KeyEventArgs e)
+        private void ComboProducto_FiltrarBusqueda(object sender, System.Windows.Input.KeyEventArgs e)
         {
             string filtro = ComboProducto.Text.ToLower();
 
@@ -267,6 +254,96 @@ namespace Comercial_Estefannny.View
             ComboProducto.IsDropDownOpen = true; // Mantener el ComboBox abierto mientras filtra
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Initialize data sources
+            ComboProducto.ItemsSource = Productos1;
+            ComboMarca.ItemsSource = Marcas;
+            ComboCategoria.ItemsSource = Categorias;
+            ComboVariante.ItemsSource = Variantes;
+            ComboCliente.ItemsSource = clientesCache;
+            ProductosListView.ItemsSource = ProductosDeVenta;
+            
+            // Set default date
+            FechaVenta.SelectedDate = DateTime.Now;
+        }
 
+        // Missing event handlers
+        private void txtSearchProduct_KeyUp(object sender, KeyEventArgs e)
+        {
+            // Implement product search functionality
+            if (sender is TextBox textBox)
+            {
+                string searchText = textBox.Text.ToLower();
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    dgvProducts.ItemsSource = Productos1;
+                }
+                else
+                {
+                    var filteredProducts = Productos1.Where(p => 
+                        p.NombreProducto.ToLower().Contains(searchText) ||
+                        p.Id.ToString().ToLower().Contains(searchText)).ToList();
+                    dgvProducts.ItemsSource = filteredProducts;
+                }
+            }
+        }
+
+        private void dgvProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (dgvProducts.SelectedItem is Producto selectedProduct)
+            {
+                // Auto-fill the form with the selected product
+                ComboProducto.SelectedItem = selectedProduct;
+                ComboMarca.SelectedItem = Marcas.FirstOrDefault(m => m.Equals(selectedProduct.NombreMarca));
+                ComboCategoria.SelectedItem = Categorias.FirstOrDefault(c => c.Equals(selectedProduct.NombreCategoria));
+                ComboVariante.SelectedItem = Variantes.FirstOrDefault(v => v.Equals(selectedProduct.Variante));
+                DecimalPrecio.Value = selectedProduct.PrecioVenta;
+                DecimalCantidad.Value = 1;
+                DecimalDescuento.Value = 0;
+            }
+        }
+
+        private void ProcessSale_Click(object sender, RoutedEventArgs e)
+        {
+            // Process the sale - same as register sale
+            BotonRegistrar_Click(sender, e);
+        }
+
+        private void ClearCart_Click(object sender, RoutedEventArgs e)
+        {
+            // Clear all products from the cart
+            ProductosDeVenta.Clear();
+            OnProductosDeVentaChanged();
+            MessageBox.Show("Carrito limpiado correctamente.");
+        }
+
+        private void SaveSale_Click(object sender, RoutedEventArgs e)
+        {
+            // Same functionality as register sale
+            BotonRegistrar_Click(sender, e);
+        }
+
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the product from the DataGrid row
+            if (sender is Button button && button.DataContext is Producto product)
+            {
+                var nuevoProducto = new ProductoVenta(
+                    product.IdProducto,
+                    product.NombreProducto,
+                    1, // Default quantity
+                    product.PrecioVenta,
+                    0  // No discount
+                )
+                {
+                    Variante = product.Variante
+                };
+
+                ProductosDeVenta.Add(nuevoProducto);
+                OnProductosDeVentaChanged();
+                MessageBox.Show($"Producto '{product.NombreProducto}' agregado al carrito.");
+            }
+        }
     }
 }

@@ -1,26 +1,26 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Windows.Data;
-using System.Windows.Markup;
 
 namespace Comercial_Estefannny.Converters
 {
+    /// <summary>
+    /// Converter que invierte un valor booleano
+    /// </summary>
     public class InverseBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool booleanValue)
+            if (value is bool boolValue)
             {
-                return !booleanValue;
+                return !boolValue;
             }
             return false;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        }        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool booleanValue)
+            if (value is bool boolValue)
             {
-                return !booleanValue;
+                return !boolValue;
             }
             return false;
         }

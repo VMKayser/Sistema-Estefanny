@@ -1,395 +1,337 @@
-﻿<UserControl
-             x:Class="Comercial_Estefannny.View.VentasView"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl x:Class="Comercial_Estefannny.View.VentasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Comercial_Estefannny.View"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
-               d:DesignHeight="1016" d:DesignWidth="1641"
-    Loaded="UserControl_Loaded">
-    <UserControl.Resources>
-        <Style x:Key="DatePickerCalendarStyle1" TargetType="{x:Type Calendar}">
-            <Setter Property="Foreground" Value="#FF333333"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFE4EAF0" Offset="0"/>
-                        <GradientStop Color="#FFECF0F4" Offset="0.16"/>
-                        <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
-                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="BorderBrush">
-                <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
-                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
-                        <GradientStop Color="#FF718597" Offset="0.375"/>
-                        <GradientStop Color="#FF617584" Offset="1"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Calendar}">
-                        <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
-                            <CalendarItem x:Name="PART_CalendarItem" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Style="{TemplateBinding CalendarItemStyle}"/>
-                        </StackPanel>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
-    <Grid RenderTransformOrigin="0.512,0.822">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="87*"/>
-            <RowDefinition Height="40*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="638*"/>
-            <ColumnDefinition Width="1003*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Height="606" VerticalAlignment="Center" Margin="0,0,4,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="47*"/>
-                <RowDefinition Height="47*"/>
-                <RowDefinition Height="47*"/>
-                <RowDefinition Height="47*"/>
-                <RowDefinition Height="47*"/>
-                <RowDefinition Height="47*"/>
-                <RowDefinition Height="47*"/>
-                <RowDefinition Height="62*"/>
+             d:DesignHeight="1016" d:DesignWidth="1641"
+             Loaded="UserControl_Loaded">
 
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../styles/MasterStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <!-- Header Section -->
+        <Border Background="#2C3E50" Height="80" VerticalAlignment="Top">
+            <Grid Margin="20,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <fa:IconImage Icon="ShoppingCart" Width="32" Height="32" Foreground="White" Margin="0,0,15,0"/>
+                    <TextBlock Text="Punto de Venta" FontSize="24" FontWeight="Bold" 
+                               Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Sales Content -->
+        <Grid Margin="20" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.RowSpan="8" Grid.Column="0" Margin="-10,10,10,0">
+            <!-- Product Selection Form -->
+            <Grid Grid.Row="1" Margin="0,100,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="62*" />
-                    <ColumnDefinition Width="63*" />
-
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" 
-                x:Name="FechaVenta" 
-                Grid.Column="1" 
-                HorizontalAlignment="Left" 
-                Margin="6,10,0,0" 
-                BorderBrush="{x:Null}" 
-                Background="{x:Null}" 
-                Foreground="#FF333333" 
-                FontFamily="Arial Black" 
-                FontSize="16" 
-                Cursor="AppStarting" 
-                SelectedDate="{Binding Fecha, Mode=TwoWay}" 
-                Width="250" 
-                Height="39" 
-                VerticalAlignment="Top" />
 
-                <!-- ComboBox para Producto -->
-                <ComboBox x:Name="ComboProducto" 
-          Grid.Column="1" 
-          HorizontalAlignment="Center" 
-          Margin="0,225,0,0" 
-          VerticalAlignment="Top" 
-          Width="300" 
-          Height="38" 
-          IsEditable="True" 
-          IsTextSearchEnabled="False"
-                    ItemsSource="{Binding Productos1}" 
-          DisplayMemberPath="NombreProducto" 
-          SelectionChanged="ComboProducto_SelectionChanged"
-          PreviewKeyUp="ComboProducto_FiltrarBusqueda"
+                <!-- Left Panel - Product Selection Form -->
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                    GotFocus="ComboProducto_GotFocus"
-          FontFamily="Arial Black"
-          FontSize="16"/>
+                    <!-- Product Selection Form -->
+                    <Border Grid.Row="0" Background="#F8F9FA" BorderBrush="#E9ECEF" BorderThickness="1" 
+                            Padding="20" Margin="0,0,0,15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
+                            <!-- Row 1: Product, Brand, Category -->
+                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,15">
+                                <TextBlock Text="Producto:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <ComboBox x:Name="ComboProducto" Height="35" FontSize="14" 
+                                          IsEditable="True" IsTextSearchEnabled="True"
+                                          ItemsSource="{Binding Productos1}"
+                                          DisplayMemberPath="NombreProducto"
+                                          SelectionChanged="ComboProducto_SelectionChanged"
+                                          PreviewKeyUp="ComboProducto_PreviewKeyUp"
+                                          GotFocus="ComboProducto_GotFocus"
+                                          KeyUp="ComboProducto_FiltrarBusqueda"/>
+                            </StackPanel>
 
-                    <!-- ComboBox para Marca -->
-                <ComboBox x:Name="ComboMarca" 
-              Grid.Column="1" 
-              HorizontalAlignment="Left" 
-              Margin="8,151,0,0" 
-              VerticalAlignment="Top" 
-              Width="302" 
-              Height="40" 
-              IsEditable="True" 
-              IsTextSearchEnabled="True" 
-              ItemsSource="{Binding Marcas}" 
-              FontFamily="Arial Black"
-              FontSize="16"/>
+                            <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,5,15">
+                                <TextBlock Text="Marca:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <ComboBox x:Name="ComboMarca" Height="35" FontSize="14"
+                                          ItemsSource="{Binding Marcas}"/>
+                            </StackPanel>
 
-                <!-- ComboBox para Categoria -->
-                <ComboBox x:Name="ComboCategoria" 
-              Grid.Column="1" 
-              HorizontalAlignment="Left" 
-              Margin="8,78,0,0" 
-              VerticalAlignment="Top" 
-              Width="302" 
-              Height="35" 
-              IsEditable="True" 
-              IsTextSearchEnabled="True" 
-              ItemsSource="{Binding Categorias}" 
-              FontFamily="Arial Black"
-              FontSize="16"/>
+                            <StackPanel Grid.Row="0" Grid.Column="2" Margin="10,0,0,15">
+                                <TextBlock Text="Categoría:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <ComboBox x:Name="ComboCategoria" Height="35" FontSize="14"
+                                          ItemsSource="{Binding Categorias}"/>
+                            </StackPanel>
 
-                <!-- ComboBox para Variante -->
-                <ComboBox x:Name="ComboVariante" 
-              Grid.Column="1" 
-              HorizontalAlignment="Center" 
-              Margin="0,298,0,0" 
-              VerticalAlignment="Top" 
-              Width="300" 
-              Height="38" 
-              IsEditable="True" 
-              IsTextSearchEnabled="True" 
-              ItemsSource="{Binding Variantes}" 
-              FontFamily="Arial Black"
-              FontSize="16"/>
+                            <!-- Row 2: Variant, Price, Quantity -->
+                            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,10,15">
+                                <TextBlock Text="Variante:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <ComboBox x:Name="ComboVariante" Height="35" FontSize="14"
+                                          ItemsSource="{Binding Variantes}"/>
+                            </StackPanel>
 
-                <xctk:DecimalUpDown x:Name="DecimalCantidad" 
-                    Grid.Column="1" 
-                    HorizontalAlignment="Left" 
-                    Margin="28,365,0,0" 
-                    VerticalAlignment="Top" 
-                    Width="101" 
-                    Height="31" 
-                    FontFamily="Arial Black"
-                    FontSize="16"
-                    Value="1"
-                    Minimum="1" />
+                            <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,5,15">
+                                <TextBlock Text="Precio:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <xctk:DecimalUpDown x:Name="DecimalPrecio" Height="35" FontSize="14"
+                                                   Minimum="0" Increment="0.01" FormatString="C"/>
+                            </StackPanel>
 
-                <xctk:DecimalUpDown x:Name="DecimalPrecio" 
-                        Grid.Column="1" 
-                        HorizontalAlignment="Left" 
-                        Margin="28,442,0,0" 
-                        VerticalAlignment="Top" 
-                        Width="101" 
-                        Value="{Binding PrecioVenta, Mode=TwoWay}" 
-                        Height="35" 
-                        FontFamily="Arial Black"
-                        FontSize="16" />
+                            <StackPanel Grid.Row="1" Grid.Column="2" Margin="10,0,0,15">
+                                <TextBlock Text="Cantidad:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <xctk:DecimalUpDown x:Name="DecimalCantidad" Height="35" FontSize="14"
+                                                   Minimum="1" Value="1" Increment="1"/>
+                            </StackPanel>
 
-                <xctk:DecimalUpDown x:Name="DecimalDescuento" 
-                    Grid.Column="1" 
-                    HorizontalAlignment="Left" 
-                    Margin="28,531,0,0" 
-                    VerticalAlignment="Top" 
-                    Width="101" 
-                    Height="32" 
-                    FontFamily="Arial Black"
-                    FontSize="16"
-                    Value="0"
-                    Minimum="0"/>
+                            <!-- Row 3: Discount and Action Buttons -->
+                            <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,10,15">
+                                <TextBlock Text="Descuento:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <xctk:DecimalUpDown x:Name="DecimalDescuento" Height="35" FontSize="14"
+                                                   Minimum="0" Value="0" Increment="0.01" FormatString="C"/>
+                            </StackPanel>
 
+                            <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
+                                        Orientation="Horizontal" Margin="5,20,0,0">
+                                <Button Content="Agregar" Background="#4CAF50" Foreground="White" 
+                                        Padding="20,8" Margin="0,0,10,0" BorderThickness="0" 
+                                        FontWeight="SemiBold" Click="BotonAgregar_Click"/>
+                                <Button Content="Editar" Background="#FFC107" Foreground="White" 
+                                        Padding="20,8" Margin="0,0,10,0" BorderThickness="0" 
+                                        FontWeight="SemiBold" Click="BotonEditar_Click"/>
+                                <Button Content="Eliminar" Background="#DC3545" Foreground="White" 
+                                        Padding="20,8" BorderThickness="0" 
+                                        FontWeight="SemiBold" Click="BotonEliminar_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
 
+                    <!-- Search Bar -->
+                    <Border Grid.Row="1" Background="#F8F9FA" BorderBrush="#E9ECEF" BorderThickness="1" 
+                            Padding="15" Margin="0,0,0,15">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBox Grid.Column="0" x:Name="txtSearchProduct" Height="40" Padding="15,10" 
+                                     BorderBrush="#D1D5DB" FontSize="14" Background="White"
+                                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                                     KeyUp="txtSearchProduct_KeyUp"/>
+                              <Button Grid.Column="1" Content="Buscar Producto" Background="{StaticResource RosaFuerteBrush}" 
+                                    Foreground="White" Padding="20,10" Margin="10,0,0,0" 
+                                    BorderThickness="0" FontWeight="SemiBold"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Products Grid -->
+                    <Border Grid.Row="2" Background="White" BorderBrush="#E9ECEF" BorderThickness="1">
+                        <DataGrid x:Name="dgvProducts" AutoGenerateColumns="False" 
+                                  Background="White" GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column" RowBackground="White" 
+                                  AlternatingRowBackground="#F8F9FA"
+                                  BorderThickness="0" FontSize="14"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Auto"
+                                  MouseDoubleClick="dgvProducts_MouseDoubleClick">
+                              <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="{StaticResource RosaSuaveBrush}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                    <Setter Property="Padding" Value="15,12"/>
+                                    <Setter Property="BorderThickness" Value="0,0,1,0"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource LavandaClaroBrush}"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Height" Value="45"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#E8F5E8"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="100"/>
+                                <DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" Width="200"/>
+                                <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}" Width="100"/>
+                                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="80"/>
+                                <DataGridTextColumn Header="Categoría" Binding="{Binding Categoria}" Width="120"/>
+                                
+                                <DataGridTemplateColumn Header="Acción" Width="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Agregar" Background="#4CAF50" Foreground="White" 
+                                                    Padding="8,4" BorderThickness="0" 
+                                                    FontSize="12" FontWeight="SemiBold"
+                                                    Click="AddToCart_Click"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+                </Grid>
+
+                <!-- Right Panel - Shopping Cart and Sale Info -->
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Sale Info Header -->
+                    <Border Grid.Row="0" Background="#2C3E50" Padding="15">
+                        <TextBlock Text="Información de Venta" FontSize="16" FontWeight="Bold" 
+                                   Foreground="White" HorizontalAlignment="Center"/>
+                    </Border>
+
+                    <!-- Sale Information -->
+                    <Border Grid.Row="1" Background="#F8F9FA" BorderBrush="#E9ECEF" BorderThickness="1,0,1,1" 
+                            Padding="15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                                <TextBlock Text="Fecha de Venta:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <DatePicker x:Name="FechaVenta" Height="35" FontSize="14"
+                                           SelectedDate="{Binding Fecha}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Margin="0,0,0,10">
+                                <TextBlock Text="Cliente:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <ComboBox x:Name="ComboCliente" Height="35" FontSize="14"
+                                          ItemsSource="{Binding clientesCache}"
+                                          DisplayMemberPath="Nombre"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2">
+                                <TextBlock Text="Tipo de Pago:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <ComboBox x:Name="ComboTipoDePago" Height="35" FontSize="14">
+                                    <ComboBoxItem>
+                                        <TextBlock Text="Efectivo"/>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        <TextBlock Text="Tarjeta"/>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        <TextBlock Text="Transferencia"/>
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Cart Items List -->
+                    <Border Grid.Row="2" Background="White" BorderBrush="#E9ECEF" BorderThickness="1,0,1,1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" Background="#34495E" Padding="10">
+                                <TextBlock Text="Productos en Venta" FontSize="14" FontWeight="Bold" 
+                                           Foreground="White" HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <ListView Grid.Row="1" x:Name="ProductosListView" 
+                                      ItemsSource="{Binding ProductosDeVenta}"
+                                      SelectionChanged="ProductosListView_SelectionChanged">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Producto" Width="120" DisplayMemberBinding="{Binding NombreProducto}"/>
+                                        <GridViewColumn Header="Cant." Width="50" DisplayMemberBinding="{Binding Cantidad}"/>
+                                        <GridViewColumn Header="Precio" Width="70" DisplayMemberBinding="{Binding Precio, StringFormat=C}"/>
+                                        <GridViewColumn Header="Desc." Width="50" DisplayMemberBinding="{Binding Descuento, StringFormat=C}"/>
+                                        <GridViewColumn Header="Total" Width="70" DisplayMemberBinding="{Binding Total, StringFormat=C}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </Border>
+
+                    <!-- Total Section -->
+                    <Border Grid.Row="3" Background="#F8F9FA" BorderBrush="#E9ECEF" BorderThickness="1,0,1,1" 
+                            Padding="15">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Grid.Column="0" Text="Total a Pagar:" FontSize="18" FontWeight="Bold" 
+                                       Foreground="#2C3E50" VerticalAlignment="Center"/>
+                            
+                            <TextBlock Grid.Column="1" x:Name="TextTotalApagar" Text="$0.00" FontSize="20" 
+                                       FontWeight="Bold" Foreground="#4CAF50"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Action Buttons -->
+                    <Border Grid.Row="4" Background="White" BorderBrush="#E9ECEF" BorderThickness="1,0,1,1" 
+                            Padding="15">
+                        <StackPanel>
+                            <Button Content="Procesar Venta" Background="#4CAF50" Foreground="White" 
+                                    Padding="0,12" Margin="0,0,0,10" BorderThickness="0" 
+                                    FontWeight="Bold" FontSize="14"
+                                    Click="ProcessSale_Click"/>
+                            
+                            <Button Content="Limpiar Carrito" Background="#DC3545" Foreground="White" 
+                                    Padding="0,10" Margin="0,0,0,10" BorderThickness="0" 
+                                    FontWeight="SemiBold"
+                                    Click="ClearCart_Click"/>
+                            
+                            <Button Content="Registrar Venta" Background="#007BFF" Foreground="White" 
+                                    Padding="0,10" BorderThickness="0" 
+                                    FontWeight="SemiBold"
+                                    Click="BotonRegistrar_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
             </Grid>
-
-            <TextBox x:Name="TextFecha" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="FECHA" 
-             VerticalAlignment="Center" 
-             Width="123" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"/>
-
-            <TextBox x:Name="TextCategoria" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="CATEGORIA" 
-             VerticalAlignment="Center" 
-             Width="152" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"
-             Grid.Row="1"/>
-
-            <TextBox x:Name="TextMarca" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="MARCA" 
-             VerticalAlignment="Center" 
-             Width="152" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"
-             Grid.Row="2"/>
-
-            <TextBox x:Name="TextoProducto" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="PRODUCTO" 
-             VerticalAlignment="Center" 
-             Width="152" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"
-             Grid.Row="3"/>
-
-            <TextBox x:Name="TextoVariante" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="VARIANTE" 
-             VerticalAlignment="Center" 
-             Width="163" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"
-             Grid.Row="4"/>
-
-            <TextBox x:Name="TextoCantidad" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="CANTIDAD" 
-             VerticalAlignment="Center" 
-             Width="137" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"
-             Grid.Row="5"/>
-
-            <TextBox x:Name="Texto_Precio" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="PRECIO" 
-             VerticalAlignment="Center" 
-             Width="163" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"
-             Grid.Row="6"/>
-
-            <TextBox x:Name="TextoDescuento" 
-             HorizontalAlignment="Left" 
-             Margin="10,0,0,0" 
-             TextWrapping="Wrap" 
-             Text="DESCUENTO" 
-             VerticalAlignment="Center" 
-             Width="152" 
-             Background="{x:Null}" 
-             BorderBrush="{x:Null}" 
-             SelectionBrush="{x:Null}" 
-             FontFamily="Arial Black"
-             FontSize="20"
-             Grid.Row="7"/>
         </Grid>
-        <ListView x:Name="ListaProductosVenta" 
-          Margin="15,48,0,6" 
-          FontFamily="Arial Black" 
-                  
-          Background="White" 
-          BorderBrush="{x:Null}" 
-          ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-          ScrollViewer.VerticalScrollBarVisibility="Visible" 
-          HorizontalContentAlignment="Stretch" 
-          VerticalContentAlignment="Center" Grid.Column="1" FontSize="16">
-
-            <ListView x:Name="ProductosListView"  ItemsSource="{Binding ProductosDeVenta}" SelectedItem="{Binding productoSeleccionado, Mode=TwoWay}" SelectionChanged="ProductosListView_SelectionChanged">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Nombre" Width="300" DisplayMemberBinding="{Binding NombreProducto}" />
-                        <GridViewColumn Header="Variante" Width="130" DisplayMemberBinding="{Binding Variante}" />
-                        <GridViewColumn Header="Cantidad" Width="130" DisplayMemberBinding="{Binding Cantidad}" />
-                        <GridViewColumn Header="Precio" Width="130" DisplayMemberBinding="{Binding Precio}" />
-                        <GridViewColumn Header="Descuento" Width="130" DisplayMemberBinding="{Binding Descuento}" />
-                        <GridViewColumn Header="Total" Width="130" DisplayMemberBinding="{Binding Total}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
-        </ListView>
-        <TextBox x:Name="TextLista" Margin="326,10,416,0" TextWrapping="Wrap" Text="LISTA DE PRODUCTOS" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" FontSize="20" Grid.Column="1" Height="20"/>
-        <ComboBox x:Name="ComboCliente" 
-    Grid.Column="1" 
-    Margin="335,160,427,118" 
-    IsEditable="True" 
-    IsTextSearchEnabled="True" 
-    Grid.Row="1" 
-    ItemsSource="{Binding clientesCache}" 
-    DisplayMemberPath="Nombre" 
-    RenderTransformOrigin="0.512,0.614" 
-    FontSize="20" 
-    FontFamily="Arial Black"
-    HorizontalContentAlignment="Center"
-    VerticalContentAlignment="Center">
-        </ComboBox>
-
-        <ComboBox x:Name="ComboTipoDePago" 
-          Grid.Column="1" 
-          Margin="335,93,427,184" 
-          IsEditable="False"
-          SelectedIndex="1"
-          Grid.Row="1" 
-          FontSize="20" 
-          FontFamily="Arial Black"
-          HorizontalContentAlignment="Center"
-          VerticalContentAlignment="Center">
-            <ComboBoxItem>
-                <TextBlock Text="QR" TextAlignment="Center" VerticalAlignment="Center"/>
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock Text="Efectivo" TextAlignment="Center" VerticalAlignment="Center"/>
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock Text="Crédito" TextAlignment="Center" VerticalAlignment="Center"/>
-            </ComboBoxItem>
-        </ComboBox>
-
-
-
-
-
-        <TextBox x:Name="TextTipoDePago" Margin="27,98,794,0" TextWrapping="Wrap" Text="TIPO DE PAGO" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="1" Grid.Column="1" Height="40" FontSize="20"/>
-        <TextBox x:Name="TextCliente" Margin="27,160,853,0" TextWrapping="Wrap" Text="CLIENTE" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="1" Grid.Column="1" Height="32" FontSize="20"/>
-        <TextBox x:Name="TextTotalPagar" Margin="27,25,0,0" TextWrapping="Wrap" Text="TOTAL A PAGAR" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" FontFamily="Arial Black" Grid.Row="1" Grid.Column="1" Height="32" FontSize="20" TextAlignment="Center" HorizontalAlignment="Left"/>
-        <TextBox x:Name="TextTotalApagar" 
-         Grid.Column="1" 
-         HorizontalAlignment="Left" 
-         Margin="335,25,0,0" 
-         Grid.Row="1" 
-         TextWrapping="Wrap" 
-         VerticalAlignment="Top" 
-         Width="241" 
-         Height="41" 
-         FontFamily="Arial Black" 
-         FontSize="20" 
-         TextAlignment="Center"
-         Text="{Binding TotalAPagar, Mode=OneWay, StringFormat='Bs. {0:N2}'}" />
-        <Button x:Name="BotonEditar" Content="Editar Producto" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="201" Click="BotonEditar_Click" FontFamily="Arial Black" Height="46" BorderBrush="Black" Grid.Row="1" FontSize="20"/>
-        <Button x:Name="BotonEliminar" Content="Eliminar Producto" HorizontalAlignment="Left" Margin="257,20,0,0" VerticalAlignment="Top" Width="223" Click="BotonEliminar_Click" FontFamily="Arial Black" Height="46" BorderBrush="Black" Grid.Row="1" FontSize="20"/>
-        <Button x:Name="BotonAgregar" Content="Agregar Producto" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="201" Click="BotonAgregar_Click" FontFamily="Arial Black" Height="45" BorderBrush="Black" Grid.Row="1" FontSize="20"/>
-        <Button x:Name="BotonRegistrar" Content="Registrar Venta" HorizontalAlignment="Left" Margin="257,95,0,0" VerticalAlignment="Top" Width="223" FontFamily="Arial Black" Height="45" BorderBrush="Black" Click="BotonRegistrar_Click" Grid.Row="1" FontSize="20"/>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                <GradientStop Color="#FFFBABAD" Offset="0"/>
-                <GradientStop Color="#FFFDCECF" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
     </Grid>
 </UserControl>

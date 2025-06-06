@@ -16,27 +16,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModelProveedores = Comercial_Estefannny.ViewModel.Proveedores;
+
+// Alias para resolver conflictos de ambigüedad entre WPF y WinForms
+using WpfMessageBox = System.Windows.MessageBox;
+using WpfUserControl = System.Windows.Controls.UserControl;
+using WpfBinding = System.Windows.Data.Binding;
 
 namespace Comercial_Estefannny.View
-{
-    public partial class Transacciones : UserControl
+{    public partial class Transacciones : WpfUserControl
     {
         private SQLiteConnection connection;
+        private bool isInitialized = false;
 
         public Transacciones()
         {
             InitializeComponent();
-          // Asociamos los eventos de cambio de fecha correctamente
-        dateTimePickerInicio.SelectedDateChanged += DateTimePicker_SelectedDateChanged;
-            dateTimePickerFin.SelectedDateChanged += DateTimePicker_SelectedDateChanged;
-
-            // Mostrar el capital invertido inicialmente con las fechas por defecto
-            MostrarCapitalInvertido();
-            MostrarGanancia();
+            
+            // Establecer fechas por defecto primero
             dateTimePickerInicio.SelectedDate = DateTime.Today;
             dateTimePickerFin.SelectedDate = DateTime.Today.AddDays(1);
+            
+            // Asociamos los eventos de cambio de fecha correctamente
+            dateTimePickerInicio.SelectedDateChanged += DateTimePicker_SelectedDateChanged;
+            dateTimePickerFin.SelectedDateChanged += DateTimePicker_SelectedDateChanged;            // Ahora cargar datos con las fechas ya establecidas
+            MostrarCapitalInvertido();
+            MostrarGanancia();
             FiltrarDatos(null, null); // Cargar datos iniciales
             MostrarVentas(DateTime.Today, DateTime.Today.AddDays(1)); // Mostrar ventas iniciales
+            
+            // Marcar como inicializado
+            isInitialized = true;
         }
 
         private void DateTimePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -93,10 +103,16 @@ namespace Comercial_Estefannny.View
                             costoTotal = Convert.ToDecimal(result);
                         }
                     }
-                }
-            }
+                }            }
             catch (Exception ex)
             {
+                // Solo mostrar MessageBox si la ventana ya está inicializada
+                if (isInitialized)
+                {
+                    MessageBox.Show("Error al calcular el capital invertido: " + ex.Message);
+                }
+                // Durante la inicialización, simplemente registrar el error sin mostrar MessageBox
+                System.Diagnostics.Debug.WriteLine($"Error durante inicialización: {ex.Message}");
             }
 
             return costoTotal;
@@ -129,12 +145,17 @@ namespace Comercial_Estefannny.View
                         {
                             gananciaTotal = Convert.ToDecimal(result);
                         }
-                    }
-                }
+                    }                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al calcular la ganancia: " + ex.Message);
+                // Solo mostrar MessageBox si la ventana ya está inicializada
+                if (isInitialized)
+                {
+                    WpfMessageBox.Show("Error al calcular la ganancia: " + ex.Message);
+                }
+                // Durante la inicialización, simplemente registrar el error sin mostrar MessageBox
+                System.Diagnostics.Debug.WriteLine($"Error durante inicialización: {ex.Message}");
             }
 
             return gananciaTotal;
@@ -153,16 +174,12 @@ namespace Comercial_Estefannny.View
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            // Verificar si los controles de fecha no son null antes de acceder a ellos
-            if (dateTimePickerInicio == null || dateTimePickerFin == null)
+            // Simplificar la comprobación de null y de fechas seleccionadas
+            if (!(dateTimePickerInicio?.SelectedDate is DateTime fechaInicio) ||
+                !(dateTimePickerFin?.SelectedDate is DateTime fechaFin))
             {
-                // Puedes manejar el error o simplemente retornar
-         
                 return;
             }
-
-            DateTime fechaInicio = dateTimePickerInicio.SelectedDate.HasValue ? dateTimePickerInicio.SelectedDate.Value : DateTime.Today;
-            DateTime fechaFin = dateTimePickerFin.SelectedDate.HasValue ? dateTimePickerFin.SelectedDate.Value : DateTime.Today.AddDays(1);
 
             if (radioVentas.IsChecked == true)
             {
@@ -174,7 +191,6 @@ namespace Comercial_Estefannny.View
             }
         }
 
-
         private void MostrarVentas(DateTime fechaInicio, DateTime fechaFin)
         {
             ConfigurarColumnasVentas();
@@ -185,12 +201,17 @@ namespace Comercial_Estefannny.View
                 {
                     conn.Open();
                     var ventas = ObtenerVentasConProductos(fechaInicio, fechaFin); // Pasamos las fechas como parámetros
-                    dataGridVentasCompras.ItemsSource = ventas;
-                }
+                    dataGridVentasCompras.ItemsSource = ventas;                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al mostrar las ventas: " + ex.Message);
+                // Solo mostrar MessageBox si la ventana ya está inicializada
+                if (isInitialized)
+                {
+                    WpfMessageBox.Show("Error al mostrar las ventas: " + ex.Message);
+                }
+                // Durante la inicialización, simplemente registrar el error sin mostrar MessageBox
+                System.Diagnostics.Debug.WriteLine($"Error durante inicialización: {ex.Message}");
             }
         }
 
@@ -204,12 +225,17 @@ namespace Comercial_Estefannny.View
                 {
                     conn.Open();
                     var compras = ObtenerComprasConProductos(fechaInicio, fechaFin); // Pasamos las fechas como parámetros
-                    dataGridVentasCompras.ItemsSource = compras;
-                }
+                    dataGridVentasCompras.ItemsSource = compras;                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al mostrar las compras: " + ex.Message);
+                // Solo mostrar MessageBox si la ventana ya está inicializada
+                if (isInitialized)
+                {
+                    WpfMessageBox.Show("Error al mostrar las compras: " + ex.Message);
+                }
+                // Durante la inicialización, simplemente registrar el error sin mostrar MessageBox
+                System.Diagnostics.Debug.WriteLine($"Error durante inicialización: {ex.Message}");
             }
         }
 
@@ -219,26 +245,25 @@ namespace Comercial_Estefannny.View
             foreach (var column in dataGridVentasCompras.Columns)
             {
                 if (column is DataGridTextColumn textColumn)
-                {
-                    switch (textColumn.Header.ToString())
+                {                    switch (textColumn.Header.ToString())
                     {
                         case "Nombre":
-                            textColumn.Binding = new Binding("NombreEntidad");
+                            textColumn.Binding = new WpfBinding("NombreEntidad");
                             break;
                         case "Fecha":
-                            textColumn.Binding = new Binding("Fecha") { StringFormat = "dd/MM/yyyy" };
+                            textColumn.Binding = new WpfBinding("Fecha") { StringFormat = "dd/MM/yyyy" };
                             break;
                         case "Cantidad":
-                            textColumn.Binding = new Binding("TotalCantidad");
+                            textColumn.Binding = new WpfBinding("TotalCantidad");
                             break;
                         case "Total Antes del Descuento":
-                            textColumn.Binding = new Binding("TotalAntesDescuento");
+                            textColumn.Binding = new WpfBinding("TotalAntesDescuento");
                             break;
                         case "Descuento":
-                            textColumn.Binding = new Binding("DescuentoTotal");
+                            textColumn.Binding = new WpfBinding("DescuentoTotal");
                             break;
                         case "Total":
-                            textColumn.Binding = new Binding("TotalVenta");
+                            textColumn.Binding = new WpfBinding("TotalVenta");
                             break;
                     }
                 }
@@ -259,26 +284,25 @@ namespace Comercial_Estefannny.View
             foreach (var column in dataGridVentasCompras.Columns)
             {
                 if (column is DataGridTextColumn textColumn)
-                {
-                    switch (textColumn.Header.ToString())
+                {                    switch (textColumn.Header.ToString())
                     {
                         case "Nombre":
-                            textColumn.Binding = new Binding("NombreEntidad");
+                            textColumn.Binding = new WpfBinding("NombreEntidad");
                             break;
                         case "Fecha":
-                            textColumn.Binding = new Binding("Fecha") { StringFormat = "dd/MM/yyyy" };
+                            textColumn.Binding = new WpfBinding("Fecha") { StringFormat = "dd/MM/yyyy" };
                             break;
                         case "Cantidad":
-                            textColumn.Binding = new Binding("TotalCantidad");
+                            textColumn.Binding = new WpfBinding("TotalCantidad");
                             break;
                         case "Total Antes del Descuento":
-                            textColumn.Binding = new Binding("TotalAntesDescuento");
+                            textColumn.Binding = new WpfBinding("TotalAntesDescuento");
                             break;
                         case "Descuento":
-                            textColumn.Binding = new Binding("DescuentoTotal");
+                            textColumn.Binding = new WpfBinding("DescuentoTotal");
                             break;
                         case "Total":
-                            textColumn.Binding = new Binding("TotalCompra");
+                            textColumn.Binding = new WpfBinding("TotalCompra");
                             break;
                     }
                 }
@@ -305,11 +329,10 @@ namespace Comercial_Estefannny.View
         }
         private void FiltrarDatos(object sender, SelectionChangedEventArgs e)
         {
-            if (dateTimePickerInicio.SelectedDate.HasValue && dateTimePickerFin.SelectedDate.HasValue)
+            // Simplificar la comprobación de null y de fechas seleccionadas
+            if (dateTimePickerInicio?.SelectedDate is DateTime fechaInicio &&
+                dateTimePickerFin?.SelectedDate is DateTime fechaFin)
             {
-                DateTime fechaInicio = dateTimePickerInicio.SelectedDate.Value;
-                DateTime fechaFin = dateTimePickerFin.SelectedDate.Value;
-
                 // Obtener datos filtrados desde la base de datos
                 var datosFiltrados = ObtenerVentasConProductos(fechaInicio, fechaFin);
 
@@ -317,7 +340,7 @@ namespace Comercial_Estefannny.View
                 dataGridVentasCompras.ItemsSource = datosFiltrados;
             }
         }
-       
+
         private List<Ventas> ObtenerVentasConProductos(DateTime fechaInicio, DateTime fechaFin)
         {
             List<Ventas> listaVentas = new List<Ventas>();
@@ -375,12 +398,17 @@ namespace Comercial_Estefannny.View
 
                             listaVentas = ventasDict.Values.ToList();
                         }
-                    }
-                }
+                    }                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos: " + ex.Message);
+                // Solo mostrar MessageBox si la ventana ya está inicializada
+                if (isInitialized)
+                {
+                    WpfMessageBox.Show("Error al obtener los datos: " + ex.Message);
+                }
+                // Durante la inicialización, simplemente registrar el error sin mostrar MessageBox
+                System.Diagnostics.Debug.WriteLine($"Error durante inicialización: {ex.Message}");
             }
 
             return listaVentas;
@@ -423,7 +451,7 @@ WHERE c.fecha BETWEEN @fechaInicio AND @fechaFin";
                                     comprasDict[idCompra] = new Compra
                                     {
                                         Fecha = Convert.ToDateTime(reader["fecha"]),
-                                        Proveedor = new proveedores { Nombre = reader["nombre_proveedor"].ToString() },
+                                        Proveedor = new ViewModelProveedores { Nombre = reader["nombre_proveedor"].ToString() }, // Use alias
                                         MetodoPago = reader["tipo_pago"].ToString(),
                                         ProductosCompra = new ObservableCollection<ProductoCompra>(),
                                         NombreEntidad = reader["nombre_proveedor"].ToString()
@@ -443,12 +471,17 @@ WHERE c.fecha BETWEEN @fechaInicio AND @fechaFin";
 
                             listaCompras = comprasDict.Values.ToList();
                         }
-                    }
-                }
+                    }                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos: " + ex.Message);
+                // Solo mostrar MessageBox si la ventana ya está inicializada
+                if (isInitialized)
+                {
+                    WpfMessageBox.Show("Error al obtener los datos: " + ex.Message);
+                }
+                // Durante la inicialización, simplemente registrar el error sin mostrar MessageBox
+                System.Diagnostics.Debug.WriteLine($"Error durante inicialización: {ex.Message}");
             }
 
             return listaCompras;
@@ -456,3 +489,4 @@ WHERE c.fecha BETWEEN @fechaInicio AND @fechaFin";
 
     }
 }
+

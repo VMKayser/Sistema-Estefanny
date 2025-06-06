@@ -6,15 +6,15 @@ using System.Windows;
 namespace Comercial_Estefannny.ViewModel
 {
 
-    public class pruebaBaseC : ViewModelbase
+    public class PruebaBaseC : ViewModelbase
     {
         private SQLiteConnection connection;
 
-        public pruebaBaseC()
+        public PruebaBaseC()
         {
             // Constructor
             // Llama al método de conectar
-            Conectar();
+           
         }
 
         private SQLiteConnection GetConnection()

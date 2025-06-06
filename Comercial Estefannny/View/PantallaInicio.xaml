@@ -4,87 +4,184 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Comercial_Estefannny.View"
-             xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              xmlns:conv="clr-namespace:Comercial_Estefannny.Converters"
-                xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-                xmlns:liveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        xmlns:wfcp="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-
              x:Class="Comercial_Estefannny.View.PantallaInicio"
              mc:Ignorable="d" 
              d:DesignHeight="1016" d:DesignWidth="1641">
-    <UserControl.Resources>
-        <conv:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+      <UserControl.Resources>
+        <!-- Import Modern Styles -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../styles/MasterStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+              <conv:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        </ResourceDictionary>
     </UserControl.Resources>
-
-    <!-- Contenedor principal con fondo de degradado -->
-    <Grid>
-        <!-- Definición del fondo con un degradado -->
+      <!-- Modern Dashboard Layout -->
+    <Grid Margin="20">
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFFBABAD"/>
-                <GradientStop Color="#FFFDCECF" Offset="1"/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource White}" Offset="0"/>
+                <GradientStop Color="{StaticResource BackgroundPrimary}" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-
-        <!-- Contenedor principal con dos filas: una para la parte superior y otra para la lista -->
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="0*"/>
-            <RowDefinition Height="51*"/>
-            <RowDefinition Height="108*"/>
-            <!-- Parte superior que se adapta -->
-            <RowDefinition Height="95*"/>
-            <!-- Parte inferior que contiene la lista y ocupa más espacio -->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--PRIMERA FILA-->
-        <!-- Segunda cuadrícula para organizar el título, el texto y los botones de opción -->
-        <Grid Margin="0,0,10,0" Height="412" VerticalAlignment="Center" Grid.Row="2">
-            <TextBlock Text="ALERTA DE STOCK" FontSize="16" FontWeight="Bold" 
-                   Margin="224,18,1257,0" Height="18" VerticalAlignment="Top" 
-                   />
-            <ListView Name="Astock_ListView" 
-          Margin="10,65,0,10" 
-          ScrollViewer.VerticalScrollBarVisibility="Visible" 
-          FontFamily="Arial Black" 
-          FontSize="11" 
-          ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-          HorizontalAlignment="Left" Width="665">
-                <ListView.View>
-                    <GridView>
-                        <!-- Columna para nombre del producto -->
-                        <GridViewColumn Header="Nombre Producto" DisplayMemberBinding="{Binding NombreProducto}" Width="450"/>
+        
+        <!-- Dashboard Header -->
 
-                        <!-- Columna para cantidad -->
-                        <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Cantidad}" Width="200"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <wfcp:PieChart Series="{Binding ProductCategorySeries}" LegendLocation="Bottom" Margin="856,10,87,10">
-                <wfcp:PieChart.DataTooltip>
-                    <wfcp:DefaultTooltip SelectionMode="OnlySender"/>
-                </wfcp:PieChart.DataTooltip>
-            </wfcp:PieChart>
-
-        </Grid>
-
-        <!-- Contenedor con borde negro que contiene la lista -->
-        <Border Grid.Row="3" BorderThickness="1" Margin="20,10,20,20">
+        <!-- First Row: Stock Alert and Category Chart -->
+        <Grid Grid.Row="1" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>            <!-- Stock Alert Card -->
+            <Border Grid.Column="0" 
+                   Style="{StaticResource ErrorCardStyle}"
+                   Background="{StaticResource WhiteBrush}"
+                   BorderBrush="{StaticResource RosaSuaveBrush}"
+                   BorderThickness="1"
+                   CornerRadius="12">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,20">                        <Border Background="{StaticResource WarningOrangeBrush}" 
+                               CornerRadius="8"
+                               Padding="8"
+                               Margin="0,0,12,0">                            <Path Data="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9M19 9H14V4H5V21H19V9Z" 
+                                  Fill="{StaticResource WhiteBrush}" 
+                                  Width="20" Height="20"/>
+                        </Border>
+                        <StackPanel>
+                            <TextBlock Text="Alerta de Stock" 
+                                      Style="{StaticResource HeaderTextStyle}"
+                                      FontSize="20"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      Margin="0"/>
+                            <TextBlock Text="Productos con stock bajo" 
+                                      Style="{StaticResource BodyTextStyle}"
+                                      Foreground="{StaticResource TextSecondaryBrush}"
+                                      Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <ListView Name="Astock_ListView" 
+                             Background="Transparent"
+                             BorderThickness="0"
+                             FontFamily="Segoe UI" 
+                             FontSize="14"
+                             MinHeight="200"
+                             MaxHeight="300">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Producto" 
+                                              DisplayMemberBinding="{Binding NombreProducto}" 
+                                              Width="300"/>
+                                <GridViewColumn Header="Stock" 
+                                              DisplayMemberBinding="{Binding Cantidad}" 
+                                              Width="100"/>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Padding" Value="8"/>
+                                <Setter Property="Margin" Value="0,2"/>                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverLightBrush}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </StackPanel>
+            </Border>            <!-- Category Distribution Chart -->
+            <Border Grid.Column="2" 
+                   Style="{StaticResource InfoCardStyle}"
+                   Background="{StaticResource WhiteBrush}"
+                   BorderBrush="{StaticResource LavandaClaroBrush}"
+                   BorderThickness="1"
+                   CornerRadius="12">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                        <Border Background="{StaticResource AzulPastelBrush}" 
+                               CornerRadius="8" 
+                               Padding="8"
+                               Margin="0,0,12,0">
+                            <Path Data="M11,2V22C5.9,21.5 2,17.2 2,12S5.9,2.5 11,2M13,2V11H22C22,6.8 18.2,3 13,2M13,13V22C18.1,21.5 22,17.2 22,13H13Z" 
+                                  Fill="{StaticResource WhiteBrush}" 
+                                  Width="20" Height="20"/>
+                        </Border>
+                        <StackPanel>
+                            <TextBlock Text="Distribución por Categoría" 
+                                      Style="{StaticResource HeaderTextStyle}"
+                                      FontSize="16"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      Margin="0"/>
+                            <TextBlock Text="Productos por categorías" 
+                                      Style="{StaticResource BodyTextStyle}"
+                                      Foreground="{StaticResource TextSecondaryBrush}"
+                                      Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                      <lvc:PieChart Series="{Binding ProductCategorySeries}" 
+                                  Height="250">
+                    </lvc:PieChart>
+                </StackPanel>
+            </Border>
+        </Grid>        <!-- Second Row: Revenue Chart -->
+        <Border Grid.Row="2" 
+               Style="{StaticResource SuccessCardStyle}"
+               Background="{StaticResource WhiteBrush}"
+               BorderBrush="{StaticResource AzulPastelBrush}"
+               BorderThickness="1"
+               CornerRadius="12"
+               Margin="0,10,0,0">
             <StackPanel>
-                <TextBlock Text="Ganancia por Periodo" FontSize="16" FontWeight="Bold" 
-                   HorizontalAlignment="Center" Margin="0,10,0,10"/>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <!-- Selección de Vista Diaria o Mensual -->
-                    <RadioButton Content="Diario" IsChecked="{Binding IsDailyView}" Margin="10,0"/>
-                    <RadioButton Content="Mensual" IsChecked="{Binding IsMonthlyView}" Margin="10,0"/>
-
-                    <!-- Selección de Mes -->
-
-                    <ComboBox 
-                     SelectedValue="{Binding SelectedMonth, UpdateSourceTrigger=PropertyChanged}" 
-                    SelectedValuePath="Tag" 
-                     Margin="10,0" 
-                     Width="100">
+                <!-- Chart Header -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Border Background="{StaticResource RosaFuerteBrush}" 
+                           CornerRadius="8" 
+                           Padding="8"
+                           Margin="0,0,12,0">
+                        <Path Data="M7,14L12,9L15,12L21,6V8L15,14L12,11L7,16M21,16V10H15V16M5,20V4H3V20A2,2 0 0,0 5,22H21V20" 
+                              Fill="{StaticResource WhiteBrush}"
+                              Width="20" Height="20"/>
+                    </Border>                    <StackPanel>
+                        <TextBlock Text="Análisis de Ganancias" 
+                                  Style="{StaticResource HeaderTextStyle}"
+                                  FontSize="20"
+                                  Foreground="{StaticResource TextPrimaryBrush}"
+                                  Margin="0"/>
+                        <TextBlock Text="Seguimiento de ingresos por período" 
+                                  Style="{StaticResource BodyTextStyle}"
+                                  Foreground="{StaticResource TextSecondaryBrush}"
+                                  Margin="0,2,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <!-- Chart Controls -->
+                <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20">                    <RadioButton Content="Vista Diaria" 
+                               IsChecked="{Binding IsDailyView}" 
+                               Style="{StaticResource ModernRadioButton}"
+                               Margin="10,0"/>
+                    <RadioButton Content="Vista Mensual" 
+                               IsChecked="{Binding IsMonthlyView}" 
+                               Style="{StaticResource ModernRadioButton}"
+                               Margin="10,0"/>
+                    
+                    <ComboBox SelectedValue="{Binding SelectedMonth, UpdateSourceTrigger=PropertyChanged}" 
+                             SelectedValuePath="Tag" 
+                             Style="{StaticResource ModernComboBoxStyle}"
+                             Margin="20,0,0,0" 
+                             Width="140">
                         <ComboBoxItem Content="Enero" Tag="1"/>
                         <ComboBoxItem Content="Febrero" Tag="2"/>
                         <ComboBoxItem Content="Marzo" Tag="3"/>
@@ -98,25 +195,16 @@
                         <ComboBoxItem Content="Noviembre" Tag="11"/>
                         <ComboBoxItem Content="Diciembre" Tag="12"/>
                     </ComboBox>
-                    <!-- Selección de Día (se actualizará según el mes seleccionado) -->
-
                 </StackPanel>
-
-                <Grid>
-                    <!-- Definimos la gráfica -->
-                    <liveCharts:CartesianChart Margin="0,0,0,-232" Series="{Binding SeriesCollection1}">
-                        <liveCharts:CartesianChart.AxisX>
-                            <liveCharts:Axis Title="Meses" Labels="{Binding Labels}" />
-                        </liveCharts:CartesianChart.AxisX>
-                        <liveCharts:CartesianChart.AxisY>
-                            <liveCharts:Axis Title="Ventas" LabelFormatter="{Binding Formatter}" />
-                        </liveCharts:CartesianChart.AxisY>
-                    </liveCharts:CartesianChart>
-                </Grid>
-
-
-
-                <!-- PieChart de LiveCharts -->
+                  <!-- Revenue Chart -->
+                <Border Background="{StaticResource BackgroundSecondaryBrush}"
+                       CornerRadius="8"
+                       Padding="20"
+                       Margin="0"
+                       Height="300"><lvc:CartesianChart Series="{Binding SeriesCollection}"
+                                       Height="300">
+                    </lvc:CartesianChart>
+                </Border>
             </StackPanel>
         </Border>
     </Grid>

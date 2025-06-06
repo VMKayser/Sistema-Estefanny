@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+// using System.Windows.Controls; // Eliminado para evitar ambigüedad
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,25 +13,76 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Comercial_Estefannny.ViewModel;
+using ViewModelProveedores = Comercial_Estefannny.ViewModel.Proveedores; // Alias for ViewModel.Proveedores
 
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Comercial_Estefannny.View
 {
-    public partial class Compras : UserControl
+    public partial class Compras : System.Windows.Controls.UserControl, INotifyPropertyChanged
     {
         // Mantener las listas de strings
         public List<string> Marcas { get; set; }
         public List<string> Categorias { get; set; }
         public List<string> Variantes { get; set; }
         public ObservableCollection<Producto> Productos1 { get; set; }
-        public ObservableCollection<proveedores> ProveedoresCache { get; set; }
+        public ObservableCollection<ViewModelProveedores> ProveedoresCache { get; set; } // Use alias
         public ObservableCollection<ProductoCompra> ProductosDeCompra { get; set; }
         private ProductoCompra productoSeleccionadoCompra;
-        private Marca selectedMarca;
-        private Categoria selectedCategoria;
-        private Producto selectedProducto;
-        private VarianteC selectedVariante;
+
+        private decimal _cantidad;
+        public decimal Cantidad
+        {
+            get => _cantidad;
+            set { _cantidad = value; OnPropertyChanged(nameof(Cantidad)); }
+        }
+
+        private decimal _precioVenta;
+        public decimal PrecioVenta
+        {
+            get => _precioVenta;
+            set { _precioVenta = value; OnPropertyChanged(nameof(PrecioVenta)); }
+        }
+
+        private decimal _descuento;
+        public decimal Descuento
+        {
+            get => _descuento;
+            set { _descuento = value; OnPropertyChanged(nameof(Descuento)); }
+        }
+
+        private DateTime? _fecha;
+        public DateTime? Fecha
+        {
+            get => _fecha;
+            set { _fecha = value; OnPropertyChanged(nameof(Fecha)); }
+        }
+
+        private string _proveedor;
+        public string Proveedor
+        {
+            get => _proveedor;
+            set { _proveedor = value; OnPropertyChanged(nameof(Proveedor)); }
+        }
+
+        private ProductoCompra _productoSeleccionado;
+        public ProductoCompra productoSeleccionado
+        {
+            get => _productoSeleccionado;
+            set { _productoSeleccionado = value; OnPropertyChanged(nameof(productoSeleccionado)); }
+        }
+
+        public decimal TotalAPagar
+        {
+            get { return ProductosDeCompra?.Sum(p => p.Total) ?? 0; }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public decimal TotalCompra
         {
@@ -52,7 +103,8 @@ namespace Comercial_Estefannny.View
             Categorias = Categoria.ObtenerCategorias();
             Variantes = VarianteC.ObtenerVarianteCs();
             Productos1 = new ObservableCollection<Producto>(Producto.ObtenerProductos());
-            ProveedoresCache = new ObservableCollection<proveedores>(proveedores.Obtenerproveedores());
+            // Corrected to use ViewModel.Proveedores.Obtenerproveedores() which returns ObservableCollection<ViewModel.Proveedores>
+            ProveedoresCache = ViewModel.Proveedores.Obtenerproveedores(); 
             ProductosDeCompra = new ObservableCollection<ProductoCompra>();
         }
 
@@ -61,7 +113,7 @@ namespace Comercial_Estefannny.View
             TextTotalCompra.Text = TotalCompra.ToString("C");
         }
 
-        private void ComboProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboProducto_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (ComboProducto.SelectedItem is Producto productoSeleccionado)
             {
@@ -75,7 +127,7 @@ namespace Comercial_Estefannny.View
             }
         }
 
-        private void ProductosListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ProductosListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (ProductosListView.SelectedItem is ProductoCompra productoSeleccionado)
             {
@@ -116,7 +168,7 @@ namespace Comercial_Estefannny.View
             }
             else
             {
-                MessageBox.Show("Seleccione un producto e ingrese el precio para agregar.");
+                System.Windows.MessageBox.Show("Seleccione un producto e ingrese el precio para agregar.");
             }
         }
 
@@ -129,7 +181,7 @@ namespace Comercial_Estefannny.View
             }
             else
             {
-                MessageBox.Show("Seleccione un producto de la lista para eliminar.");
+                System.Windows.MessageBox.Show("Seleccione un producto de la lista para eliminar.");
             }
         }
 
@@ -144,11 +196,11 @@ namespace Comercial_Estefannny.View
                 ProductosListView.ItemsSource = null;
                 ProductosListView.ItemsSource = ProductosDeCompra;
                 OnProductosDeCompraChanged();
-                MessageBox.Show("Producto actualizado correctamente.");
+                System.Windows.MessageBox.Show("Producto actualizado correctamente.");
             }
             else
             {
-                MessageBox.Show("Seleccione un producto de la lista para editar.");
+                System.Windows.MessageBox.Show("Seleccione un producto de la lista para editar.");
             }
         }
 
@@ -156,16 +208,17 @@ namespace Comercial_Estefannny.View
         {
             if (ProductosDeCompra.Count == 0)
             {
-                MessageBox.Show("No hay productos en la compra.");
+                System.Windows.MessageBox.Show("No hay productos en la compra.");
                 return;
             }
 
             DateTime fechaCompra = FechaCompra.SelectedDate ?? DateTime.Now;
-            string nombreProveedor = (ComboProveedor.SelectedItem as proveedores)?.Nombre;
+            // Cast to ViewModel.Proveedores using the alias
+            string nombreProveedor = (ComboProveedor.SelectedItem as ViewModelProveedores)?.Nombre; 
 
             if (string.IsNullOrEmpty(nombreProveedor))
             {
-                MessageBox.Show("Por favor, seleccione un proveedor.");
+                System.Windows.MessageBox.Show("Por favor, seleccione un proveedor.");
                 return;
             }
 
@@ -175,9 +228,9 @@ namespace Comercial_Estefannny.View
             ProductosDeCompra.Clear();
             OnProductosDeCompraChanged();
 
-            MessageBox.Show("Compra registrada correctamente.");
+            System.Windows.MessageBox.Show("Compra registrada correctamente.");
         }
-        private void ComboProducto_FiltrarBusqueda(object sender, KeyEventArgs e)
+        private void ComboProducto_FiltrarBusqueda(object sender, System.Windows.Input.KeyEventArgs e)
         {
             string filtro = ComboProducto.Text.ToLower();
 

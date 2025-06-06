@@ -21,7 +21,7 @@ namespace Comercial_Estefannny.View
     /// <summary>
     /// Lógica de interacción para Inventario.xaml
     /// </summary>
-    public partial class Inventario : UserControl
+    public partial class Inventario : System.Windows.Controls.UserControl
     {
         public int Cantidad { get; set; } = 0; // Valor por defecto
         public string CodigoBarras { get; set; } = "Sin código"; // Valor por defecto
@@ -53,22 +53,17 @@ namespace Comercial_Estefannny.View
         }
         private void CargarProductos()
         {
-
-        // Limpiar la colección actual
-        productos.Clear();
-            ProductosListView.Items.Clear();
-            // Obtener los productos de la base de datos y agregar a la colección
-            foreach (var producto in Producto.ObtenerProductos())
+            // Refrescar la caché de productos y actualizar la colección
+            Producto.RefrescarCache();
+            productos.Clear();
+            foreach (var producto in Producto.productosCache)
             {
                 productos.Add(producto);
             }
-         
-            // Asignar la colección al ListView
-            ProductosListView.ItemsSource = productos;
-
+            // No es necesario reasignar ItemsSource ni limpiar manualmente
         }
 
-        private void MarcaComboBox_KeyUp(object sender, KeyEventArgs e)
+        private void MarcaComboBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             string textoBusqueda = MarcaComboBox.Text.ToLower();
 
@@ -90,7 +85,7 @@ namespace Comercial_Estefannny.View
 
 
 
-        private void CategoriaComboBox_KeyUp(object sender, KeyEventArgs e)
+        private void CategoriaComboBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             string textoBusqueda = CategoriaComboBox.Text.ToLower();
 
@@ -112,7 +107,7 @@ namespace Comercial_Estefannny.View
         {
             CategoriaComboBox.IsDropDownOpen = true;
         }
-        private void VarianteComboBox_KeyUp(object sender, KeyEventArgs e)
+        private void VarianteComboBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             string textoBusqueda = VarianteComboBox.Text.ToLower();
 
@@ -134,7 +129,7 @@ namespace Comercial_Estefannny.View
         {
             VarianteComboBox.IsDropDownOpen = true;
         }
-        private void ProductoComboBox_KeyUp(object sender, KeyEventArgs e)
+        private void ProductoComboBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             string textoBusqueda = ProductoComboBox.Text.ToLower();
 
@@ -174,13 +169,13 @@ namespace Comercial_Estefannny.View
             // Validar que el nombre del producto y los precios no estén vacíos
             if (string.IsNullOrWhiteSpace(nombreProducto))
             {
-                MessageBox.Show("El nombre del producto es obligatorio.");
+                System.Windows.MessageBox.Show("El nombre del producto es obligatorio.");
                 return; // Salir del método si el nombre del producto está vacío
             }
 
             if (precioCompra <= 0 || precioVenta <= 0)
             {
-                MessageBox.Show("Los precios deben ser mayores a cero.");
+                System.Windows.MessageBox.Show("Los precios deben ser mayores a cero.");
                 return; // Salir del método si los precios no son válidos
             }
 
@@ -201,7 +196,7 @@ namespace Comercial_Estefannny.View
             CargarProductos();
 
             // Notificar al usuario y limpiar los campos
-            MessageBox.Show("Producto agregado correctamente.");
+            System.Windows.MessageBox.Show("Producto agregado correctamente.");
 
             // Limpiar campos después de agregar el producto
             ProductoComboBox.Text = string.Empty;
@@ -249,7 +244,7 @@ namespace Comercial_Estefannny.View
                     // Llamamos al método de eliminación del producto
                     productoSeleccionado.EliminarProducto();
 
-                    MessageBox.Show("Producto eliminado correctamente.");
+                    System.Windows.MessageBox.Show("Producto eliminado correctamente.");
                     CargarProductos(); // Actualizar la lista completa
                 }
                 else
@@ -259,17 +254,17 @@ namespace Comercial_Estefannny.View
                     {
                         string marcaSeleccionada = MarcaComboBox.Text;
 
-                        if (!Producto.ExisteProductoConMarca(marcaSeleccionada))
+                        if (!Producto.ExisteProductoConMarca(Marca.ObtenerIdPorNombre(marcaSeleccionada)))
                         {
                             Marca.EliminarMarcaPorNombre(marcaSeleccionada);
                             marcas.Remove(marcaSeleccionada);
                             MarcaComboBox.ItemsSource = null;
                             MarcaComboBox.ItemsSource = marcas;
-                            MessageBox.Show("Marca eliminada correctamente.");
+                            System.Windows.MessageBox.Show("Marca eliminada correctamente.");
                         }
                         else
                         {
-                            MessageBox.Show("La marca está siendo utilizada en productos. No se puede eliminar.");
+                            System.Windows.MessageBox.Show("La marca está siendo utilizada en productos. No se puede eliminar.");
                         }
                     }
 
@@ -277,18 +272,18 @@ namespace Comercial_Estefannny.View
                     {
                         string categoriaSeleccionada = CategoriaComboBox.Text;
 
-                        if (!Producto.ExisteProductoConCategoria(categoriaSeleccionada))
+                        if (!Producto.ExisteProductoConCategoria(Categoria.ObtenerIdPorNombre(categoriaSeleccionada)))
                         {
                             Categoria.EliminarCategoriaPorNombre(categoriaSeleccionada);
                             categorias.Remove(categoriaSeleccionada);
                             CategoriaComboBox.ItemsSource = null;
                             CategoriaComboBox.ItemsSource = categorias;
 
-                            MessageBox.Show("Categoría eliminada correctamente.");
+                            System.Windows.MessageBox.Show("Categoría eliminada correctamente.");
                         }
                         else
                         {
-                            MessageBox.Show("La categoría está siendo utilizada en productos. No se puede eliminar.");
+                            System.Windows.MessageBox.Show("La categoría está siendo utilizada en productos. No se puede eliminar.");
                         }
                     }
 
@@ -296,18 +291,18 @@ namespace Comercial_Estefannny.View
                     {
                         string varianteSeleccionada = VarianteComboBox.Text;
 
-                        if (!Producto.ExisteProductoConVariante(varianteSeleccionada))
+                        if (!Producto.ExisteProductoConVariante(VarianteC.ObtenerIdPorNombre(varianteSeleccionada)))
                         {
                             VarianteC.EliminarVarianteCPorNombre(varianteSeleccionada);
                             variantes.Remove(varianteSeleccionada);
                             VarianteComboBox.ItemsSource = null;
                             VarianteComboBox.ItemsSource = variantes;
 
-                            MessageBox.Show("VarianteC eliminada correctamente.");
+                            System.Windows.MessageBox.Show("VarianteC eliminada correctamente.");
                         }
                         else
                         {
-                            MessageBox.Show("La variante está siendo utilizada en productos. No se puede eliminar.");
+                            System.Windows.MessageBox.Show("La variante está siendo utilizada en productos. No se puede eliminar.");
                         }
                     }
                     CargarProductos(); // Actualizar la lista completa
@@ -322,12 +317,12 @@ namespace Comercial_Estefannny.View
                     // Llamamos al método de eliminación del producto
                     productoSeleccionado.EliminarProducto();
 
-                    MessageBox.Show("Producto eliminado correctamente.");
+                    System.Windows.MessageBox.Show("Producto eliminado correctamente.");
                     CargarProductos(); // Actualizar la lista completa
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecciona un producto para eliminar.");
+                    System.Windows.MessageBox.Show("Por favor, selecciona un producto para eliminar.");
                 }
             }
         }
@@ -366,11 +361,11 @@ namespace Comercial_Estefannny.View
                 CargarProductos();
 
                 // Notificar al usuario
-                MessageBox.Show("Producto actualizado correctamente.");
+                System.Windows.MessageBox.Show("Producto actualizado correctamente.");
             }
             else
             {
-                MessageBox.Show("Por favor, selecciona un producto para editar.");
+                System.Windows.MessageBox.Show("Por favor, selecciona un producto para editar.");
             }
         }
         private void TextBuscador_TextChanged(object sender, TextChangedEventArgs e)
@@ -410,17 +405,16 @@ namespace Comercial_Estefannny.View
                 try
                 {
                     // Asumimos que tienes un método en tu ViewModel para importar desde Excel
-                    var productosViewModel = new Producto();
-                    productosViewModel.ImportarProductosDesdeExcel(filePath);
+                    Producto.ImportarProductosDesdeExcel(filePath);
 
-                    MessageBox.Show("Productos importados exitosamente.");
+                    System.Windows.MessageBox.Show("Productos importados exitosamente.");
 
                     // Actualizar la lista de clientes después de la importación
                     CargarProductos();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al importar los datos: {ex.Message}");
+                    System.Windows.MessageBox.Show($"Error al importar los datos: {ex.Message}");
                 }
             }
         }
@@ -434,6 +428,9 @@ namespace Comercial_Estefannny.View
 
     }
 }
+
+
+
 
 
 

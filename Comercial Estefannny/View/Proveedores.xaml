@@ -5,70 +5,279 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
            xmlns:local="clr-namespace:Comercial_Estefannny.View"
            xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+           xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
            mc:Ignorable="d" 
            d:DesignHeight="606" d:DesignWidth="751">
-    <Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="51*"/>
-                <RowDefinition Height="50*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- Nuevo Grid dentro de la segunda fila con las divisiones de columna -->
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <ListView x:Name="ProveedoresListView" Margin="10,23,10,10" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial Black" FontSize="11" ScrollViewer.HorizontalScrollBarVisibility="Visible" SelectionChanged="ProveedoresListView_SelectionChanged">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="300"/>
-                            <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}" Width="150"/>
-                            <GridViewColumn Header="Direccion" DisplayMemberBinding="{Binding Direccion}" Width="150"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <TextBox x:Name="TextBuscadorProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Height="18" />
-            </Grid>
-            <Grid Margin="0,1,375,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBox x:Name="NombreProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="NOMBRE:" VerticalAlignment="Center" Width="92" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="20"/>
-                <TextBox x:Name="DireccionProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="DIRECCION:" VerticalAlignment="Center" Width="118" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Grid.Row="2" Height="20"/>
-                <TextBox x:Name="TelefonoProveedor" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="TELEFONO:" VerticalAlignment="Center" Width="118" FontFamily="Arial Black" FontSize="16" AllowDrop="True" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Grid.Row="1" Height="20"/>
-                <TextBox x:Name="TextDireccionProveedor" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
-                <TextBox x:Name="TextTelefonoProveedor" HorizontalAlignment="Left" Margin="210,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
-                <TextBox x:Name="TextNombreProveedor" HorizontalAlignment="Left" Margin="210,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="147" Height="22"/>
-
-            </Grid>
-            <Grid Margin="376,0,-1,1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button x:Name="BotonAgregarProveedor" Content="Agregar" HorizontalAlignment="Left" Margin="29,28,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  FontFamily="Arial Black" Height="32" BorderBrush="Black" Click="BotonAgregarProveedor_Click"/>
-                <Button x:Name="BotonEliminarProveedor" Content="Eliminar" HorizontalAlignment="Left" Margin="29,80,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  BorderBrush="Black" Height="32" FontFamily="Arial Black" Click="BotonEliminarProveedor_Click" />
-                <Button x:Name="BotonEditarProveedor" Content="Editar" HorizontalAlignment="Left" Margin="29,0,0,0" VerticalAlignment="Center" Width="148"  BorderBrush="Black" Height="31" FontFamily="Arial Black"  Grid.Row="1" Click="BotonEditarProveedor_Click"/>
-                <Button x:Name="BotonImportarDatosProveedor" Content="Importar Datos" HorizontalAlignment="Left" Margin="29,190,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="148"  BorderBrush="Black" Height="32" FontFamily="Arial Black" Click="BotonImportarDatosProveedor_Click"/>
-            </Grid>
-        </Grid>
-
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/styles/POSColors.xaml"/>
+                <ResourceDictionary Source="/styles/MasterStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+      <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                <GradientStop Color="#FFFBABAD" Offset="0"/>
-                <GradientStop Color="#FFFDCECF" Offset="1"/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource White}" Offset="0"/>
+                <GradientStop Color="{StaticResource BackgroundPrimary}" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header Section -->
+        <Border Grid.Row="0" Background="{StaticResource LavandaHeaderBrush}" Margin="20,20,20,10" Padding="20" CornerRadius="12" 
+                BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect Color="#E0E0E0" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+            </Border.Effect>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <fa:IconImage Icon="TruckFast" Width="32" Height="32" Foreground="{StaticResource InfoBlueBrush}" Margin="0,0,15,0"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Gestión de Proveedores" FontSize="24" FontWeight="Bold" 
+                              Foreground="{StaticResource TextPrimaryBrush}"/>
+                    <TextBlock Text="Administra tu lista de proveedores" 
+                              FontSize="14" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
 
+        <!-- Content Section -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="20,0,20,20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
+                <!-- Supplier Form Section -->
+                <Border Grid.Row="0" Background="{StaticResource WhiteBrush}" CornerRadius="12" Margin="0,0,0,15" 
+                        BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1" Padding="25">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#E0E0E0" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Form Fields -->
+                        <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                            <TextBlock Text="Información del Proveedor" 
+                                       FontSize="18" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" 
+                                       Margin="0,0,0,20"/>
+                            
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <!-- Nombre -->
+                                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,15">
+                                    <fa:IconImage Icon="User" Width="16" Height="16" Foreground="{StaticResource InfoBlueBrush}" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Nombre:" FontWeight="Medium" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Border Grid.Row="0" Grid.Column="1" Background="{StaticResource BackgroundSecondaryBrush}" 
+                                        CornerRadius="8" BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1" Margin="0,0,0,15">
+                                    <TextBox x:Name="TextNombreProveedor" Background="Transparent" BorderThickness="0" 
+                                             Padding="12,10" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                </Border>
+                                
+                                <!-- Teléfono -->
+                                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,15">
+                                    <fa:IconImage Icon="Phone" Width="16" Height="16" Foreground="{StaticResource SuccessGreenBrush}" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Teléfono:" FontWeight="Medium" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource BackgroundSecondaryBrush}" 
+                                        CornerRadius="8" BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1" Margin="0,0,0,15">
+                                    <TextBox x:Name="TextTelefonoProveedor" Background="Transparent" BorderThickness="0" 
+                                             Padding="12,10" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                </Border>
+                                
+                                <!-- Dirección -->
+                                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,15">
+                                    <fa:IconImage Icon="MapMarkerAlt" Width="16" Height="16" Foreground="{StaticResource WarningOrangeBrush}" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Dirección:" FontWeight="Medium" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Border Grid.Row="2" Grid.Column="1" Background="{StaticResource BackgroundSecondaryBrush}" 
+                                        CornerRadius="8" BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1" Margin="0,0,0,15">
+                                    <TextBox x:Name="TextDireccionProveedor" Background="Transparent" BorderThickness="0" 
+                                             Padding="12,10" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                </Border>
+                                
+                                <!-- Search -->
+                                <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <fa:IconImage Icon="Search" Width="16" Height="16" Foreground="{StaticResource RosaAccentBrush}" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Buscar:" FontWeight="Medium" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Border Grid.Row="3" Grid.Column="1" Background="{StaticResource BackgroundSecondaryBrush}" 
+                                        CornerRadius="8" BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1">
+                                    <TextBox x:Name="TextBuscadorProveedor" Background="Transparent" BorderThickness="0" 
+                                             Padding="12,10" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"
+                                             ToolTip="Buscar proveedor por nombre"/>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <!-- Action Buttons -->
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Acciones" 
+                                       FontSize="18" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" 
+                                       Margin="0,0,0,20"/>
+                              <Border CornerRadius="8" Background="{StaticResource SuccessGreenBrush}" Margin="0,0,0,12">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="{StaticResource SuccessGreen}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                                </Border.Effect>
+                                <Button x:Name="BotonAgregarProveedor" Background="Transparent" Foreground="White"
+                                        Padding="15,12" BorderThickness="0" FontWeight="SemiBold"
+                                        Click="BotonAgregarProveedor_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:IconImage Icon="Plus" Width="16" Height="16" Foreground="White" Margin="0,0,8,0"/>
+                                        <TextBlock Text="Agregar"/>
+                                    </StackPanel>
+                                </Button>                            </Border>
+                                  
+                            <Border CornerRadius="8" Background="{StaticResource InfoBlueBrush}" Margin="0,0,0,12">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="{StaticResource InfoBlue}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                                </Border.Effect>
+                                <Button x:Name="BotonEditarProveedor" Background="Transparent" Foreground="White"
+                                        Padding="15,12" BorderThickness="0" FontWeight="SemiBold"
+                                        Click="BotonEditarProveedor_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:IconImage Icon="Edit" Width="16" Height="16" Foreground="White" Margin="0,0,8,0"/>
+                                        <TextBlock Text="Editar"/>
+                                    </StackPanel>
+                                </Button>
+                            </Border>
+                            
+                            <Border CornerRadius="8" Background="{StaticResource DangerRedBrush}" Margin="0,0,0,12">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="{StaticResource DangerRed}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                                </Border.Effect>
+                                <Button x:Name="BotonEliminarProveedor" Background="Transparent" Foreground="White"
+                                        Padding="15,12" BorderThickness="0" FontWeight="SemiBold"
+                                        Click="BotonEliminarProveedor_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:IconImage Icon="TrashAlt" Width="16" Height="16" Foreground="White" Margin="0,0,8,0"/>
+                                        <TextBlock Text="Eliminar"/>
+                                    </StackPanel>
+                                </Button>                            </Border>
+                            
+                            <Border CornerRadius="8" Background="{StaticResource AzulAccentBrush}" Margin="0,0,0,12">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="{StaticResource AzulAccent}" BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                                </Border.Effect>
+                                <Button x:Name="BotonImportarDatosProveedor" Background="Transparent" Foreground="White"
+                                        Padding="15,12" BorderThickness="0" FontWeight="SemiBold"
+                                        Click="BotonImportarDatosProveedor_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:IconImage Icon="FileImport" Width="16" Height="16" Foreground="White" Margin="0,0,8,0"/>
+                                        <TextBlock Text="Importar"/>
+                                    </StackPanel>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>                <!-- Suppliers List Section -->
+                <Border Grid.Row="1" Background="{StaticResource WhiteBrush}" CornerRadius="12" 
+                        BorderBrush="{StaticResource BorderLightBrush}" BorderThickness="1" Padding="25">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#E0E0E0" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+                            <fa:IconImage Icon="List" Width="24" Height="24" Foreground="{StaticResource RosaAccentBrush}" Margin="0,0,10,0"/>
+                            <TextBlock Text="Lista de Proveedores" 
+                                       FontSize="18" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" 
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        
+                        <DataGrid Grid.Row="1" x:Name="ProveedoresListView" 
+                                  Background="{StaticResource WhiteBrush}"
+                                  AutoGenerateColumns="False"
+                                  SelectionChanged="ProveedoresListView_SelectionChanged"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  BorderThickness="0"
+                                  GridLinesVisibility="Horizontal"
+                                  HorizontalGridLinesBrush="{StaticResource BorderLightBrush}"
+                                  MinHeight="300"
+                                  MaxHeight="400">
+                            <DataGrid.Resources>
+                                <!-- Column Header Style -->
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="{StaticResource BackgroundPrimaryBrush}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                    <Setter Property="FontSize" Value="14"/>
+                                    <Setter Property="Padding" Value="12,10"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource BorderLightBrush}"/>
+                                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                </Style>
+                                
+                                <!-- Row Style -->
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Padding" Value="8"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource BackgroundSecondaryBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource AzulAccentBrush}"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                                
+                                <!-- Cell Style -->
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Padding" Value="12,8"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nombre" 
+                                                    Binding="{Binding Nombre}" 
+                                                    Width="*" 
+                                                    MinWidth="200"/>
+                                <DataGridTextColumn Header="Teléfono" 
+                                                    Binding="{Binding Telefono}" 
+                                                    Width="150"/>
+                                <DataGridTextColumn Header="Dirección" 
+                                                    Binding="{Binding Direccion}" 
+                                                    Width="*" 
+                                                    MinWidth="250"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
 
-
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

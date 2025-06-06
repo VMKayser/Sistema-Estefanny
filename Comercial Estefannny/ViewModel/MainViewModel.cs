@@ -1,20 +1,22 @@
 ﻿using FontAwesome.Sharp;
 using System.Windows.Input;
+using Comercial_Estefannny.ViewModel;
+using Comercial_Estefannny.View;
 
 namespace Comercial_Estefannny.ViewModel
 {
     public class MainViewModel : ViewModelbase
     {
         // Campos privados
-        private ViewModelbase _currentChildView;
-        private string _caption;
-        private IconChar _icon;
+        private object _currentView = new PantallaInicio();
+        private string _caption = "Inicio";
+        private IconChar _icon = IconChar.Home;
 
         // Propiedades públicas
-        public ViewModelbase CurrentChildView
+        public object CurrentView
         {
-            get => _currentChildView;
-            set { _currentChildView = value; OnPropertyChanged(nameof(CurrentChildView)); }
+            get => _currentView;
+            set { _currentView = value; OnPropertyChanged(nameof(CurrentView)); }
         }
         public string Caption
         {
@@ -47,56 +49,59 @@ namespace Comercial_Estefannny.ViewModel
             VentanaProveedores = new ViewModelCommand(ExecuteVentanaProveedores);
             VentanaTransacciones = new ViewModelCommand(ExecuteVentanaTransacciones);
             VentanaPruebaBase = new ViewModelCommand(ExecuteVentanaPruebaBase);
-            // Vista por defecto
-            ExecuteVentanaInicial(null);
+            // Vista por defecto            ExecuteVentanaInicial(null!);
         }
 
         // Métodos de cambio de vista
         private void ExecuteVentanaPruebaBase(object obj)
         {
-            CurrentChildView = new pruebaBaseC();
+            // Crear instancia de la vista correspondiente
+            CurrentView = new Pruebabase();
             Caption = "Prueba Base";
             Icon = IconChar.Home;
         }
+
         private void ExecuteVentanaTransacciones(object obj)
         {
-            CurrentChildView = new TransaccionesC();
+            CurrentView = new Transacciones();
             Caption = "Transacciones";
             Icon = IconChar.ExchangeAlt;
-        }
-        private void ExecuteVentanaProveedores(object obj)
+        }        private void ExecuteVentanaProveedores(object obj)
         {
-            CurrentChildView = new proveedores();
+            CurrentView = new View.Proveedores();
             Caption = "Proveedores";
             Icon = IconChar.Truck;
         }
+
         private void ExecuteVentanaCompras(object obj)
         {
-            CurrentChildView = new Compra();
+            CurrentView = new Compras();
             Caption = "Compras";
-            Icon = IconChar.ShoppingCart;
+            Icon = IconChar.ShoppingBag;
         }
+
         private void ExecuteVentanaInventario(object obj)
         {
-            CurrentChildView = new InventarioC();
+            CurrentView = new Inventario();
             Caption = "Inventario";
             Icon = IconChar.Warehouse;
         }
+
         private void ExecuteVentanaClientes(object obj)
         {
-            CurrentChildView = new ClientesC();
+            CurrentView = new Clientes();
             Caption = "Clientes";
-            Icon = IconChar.User;
-        }
-        private void ExecuteVentanaVentas(object obj)
+            Icon = IconChar.Users;
+        }        private void ExecuteVentanaVentas(object obj)
         {
-            CurrentChildView = new Ventas();
+            CurrentView = new VentasView();
             Caption = "Ventas";
             Icon = IconChar.ShoppingCart;
         }
+
         private void ExecuteVentanaInicial(object obj)
         {
-            CurrentChildView = new PantallaInicioC();
+            CurrentView = new PantallaInicio();
             Caption = "Inicio";
             Icon = IconChar.Home;
         }
